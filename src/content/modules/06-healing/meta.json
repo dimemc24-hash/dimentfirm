@@ -1,0 +1,16 @@
+{
+  "id": "06-healing",
+  "title": "Healing Your Relationship with Money",
+  "description": "Financial trauma, shame, identity, and rebuilding self-trust",
+  "order": 6,
+  "lessons": [
+    { "id": "01-financial-shame", "title": "Understanding Financial Shame", "duration_min": 20, "xp_available": 150 },
+    { "id": "02-identity-after", "title": "Identity After Bankruptcy", "duration_min": 20, "xp_available": 150 },
+    { "id": "03-relationships-money", "title": "Money and Your Relationships", "duration_min": 20, "xp_available": 150 },
+    { "id": "04-rebuilding-self-trust", "title": "Rebuilding Self-Trust with Money", "duration_min": 20, "xp_available": 150 }
+  ],
+  "game": null,
+  "prerequisites": ["05-emergency-fund"],
+  "xp_total": 600,
+  "badges": ["brave-heart"]
+}

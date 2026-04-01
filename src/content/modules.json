@@ -1,0 +1,12 @@
+[
+  { "id": "01-fresh-start", "title": "Welcome to Your Fresh Start", "description": "Orientation, emotional grounding, goals, and baseline assessment", "order": 1, "lesson_count": 6, "xp_total": 950, "game": null },
+  { "id": "02-money-story", "title": "Your Money Story", "description": "Financial psychology, money narratives, inherited beliefs, and the Belief Trap game", "order": 2, "lesson_count": 6, "xp_total": 1100, "game": "belief-trap" },
+  { "id": "03-budgeting", "title": "Budgeting Foundations", "description": "50/30/20 framework, income calculation, and the Budget Crisis game", "order": 3, "lesson_count": 6, "xp_total": 1350, "game": "budget-crisis" },
+  { "id": "04-envelope-system", "title": "Cash-Based Living & The Envelope System", "description": "Cash psychology, envelope budgeting, and the Envelope Challenge game", "order": 4, "lesson_count": 5, "xp_total": 1250, "game": "envelope-challenge" },
+  { "id": "05-emergency-fund", "title": "Building Your Emergency Fund", "description": "Emergency vs slush fund, $1,000 plan, and the Savings Sprint game", "order": 5, "lesson_count": 5, "xp_total": 1300, "game": "savings-sprint" },
+  { "id": "06-healing", "title": "Healing Your Relationship with Money", "description": "Financial trauma, shame, identity, and rebuilding self-trust", "order": 6, "lesson_count": 4, "xp_total": 600, "game": null },
+  { "id": "07-credit-rebuilding", "title": "Credit Rebuilding", "description": "Credit reports, FICO scores, secured cards, dispute letters, and Credit Score Simulator", "order": 7, "lesson_count": 7, "xp_total": 1250, "game": "credit-score-sim" },
+  { "id": "08-predatory-traps", "title": "Avoiding Predatory Traps", "description": "Predatory lenders, red flags, APR calculation, and Predatory Lending Detector game", "order": 8, "lesson_count": 5, "xp_total": 1000, "game": "predatory-lending-detector" },
+  { "id": "09-income-growth", "title": "Income Growth & The Gig Economy", "description": "Variable income management, side hustles, and the Gig Economy Simulator", "order": 9, "lesson_count": 6, "xp_total": 930, "game": "gig-economy-sim" },
+  { "id": "10-road-map", "title": "Your 12-Month Financial Road Map", "description": "Major purchases, Letter of Explanation, capstone road map, and graduation", "order": 10, "lesson_count": 6, "xp_total": 1400, "game": null }
+]

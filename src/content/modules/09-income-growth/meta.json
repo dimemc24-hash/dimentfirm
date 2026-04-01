@@ -1,0 +1,18 @@
+{
+  "id": "09-income-growth",
+  "title": "Income Growth & The Gig Economy",
+  "description": "Variable income management, side hustles, and the Gig Economy Simulator",
+  "order": 9,
+  "lessons": [
+    { "id": "01-variable-income", "title": "Why Standard Budgets Fail Variable Earners", "duration_min": 25, "xp_available": 100 },
+    { "id": "02-baseline-method", "title": "The Baseline Income Method", "duration_min": 35, "xp_available": 100 },
+    { "id": "03-side-hustles", "title": "Realistic Side Hustle Options", "duration_min": 30, "xp_available": 100 },
+    { "id": "04-gig-traps", "title": "The Gig Economy: Opportunities and Traps", "duration_min": 30, "xp_available": 180 },
+    { "id": "05-cash-flow", "title": "Cash Flow Budgeting", "duration_min": 35, "xp_available": 150 },
+    { "id": "06-gig-sim", "title": "Gig Economy Simulator", "duration_min": 45, "xp_available": 300 }
+  ],
+  "game": "gig-economy-sim",
+  "prerequisites": ["08-predatory-traps"],
+  "xp_total": 930,
+  "badges": ["income-architect", "cash-flow-master", "side-hustle-pro"]
+}

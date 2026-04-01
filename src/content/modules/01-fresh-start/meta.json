@@ -1,0 +1,18 @@
+{
+  "id": "01-fresh-start",
+  "title": "Welcome to Your Fresh Start",
+  "description": "Orientation, emotional grounding, goals, and baseline assessment",
+  "order": 1,
+  "lessons": [
+    { "id": "01-welcome", "title": "Welcome to Fresh Start Academy", "duration_min": 20, "xp_available": 150 },
+    { "id": "02-what-this-course-is", "title": "What This Course Is (And Isn't)", "duration_min": 25, "xp_available": 150 },
+    { "id": "03-baseline-assessment", "title": "Your Financial Baseline Assessment", "duration_min": 30, "xp_available": 150 },
+    { "id": "04-your-discharge", "title": "Understanding Your Discharge", "duration_min": 30, "xp_available": 150 },
+    { "id": "05-smart-goals", "title": "Setting SMART Financial Goals", "duration_min": 40, "xp_available": 150 },
+    { "id": "06-your-toolkit", "title": "Meet Your Financial Toolkit", "duration_min": 25, "xp_available": 200 }
+  ],
+  "game": null,
+  "prerequisites": [],
+  "xp_total": 950,
+  "badges": ["fresh-start", "goal-setter"]
+}

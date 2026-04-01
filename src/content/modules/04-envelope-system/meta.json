@@ -1,0 +1,17 @@
+{
+  "id": "04-envelope-system",
+  "title": "Cash-Based Living & The Envelope System",
+  "description": "Cash psychology, envelope budgeting, and the Envelope Challenge game",
+  "order": 4,
+  "lessons": [
+    { "id": "01-cash-psychology", "title": "The Psychology of Cash", "duration_min": 25, "xp_available": 150 },
+    { "id": "02-envelope-method", "title": "The Envelope Method", "duration_min": 35, "xp_available": 200 },
+    { "id": "03-your-envelopes", "title": "Setting Up Your Envelopes", "duration_min": 40, "xp_available": 200 },
+    { "id": "04-digital-envelopes", "title": "Digital Envelope Alternatives", "duration_min": 25, "xp_available": 200 },
+    { "id": "05-envelope-challenge", "title": "Envelope Challenge Game", "duration_min": 35, "xp_available": 500 }
+  ],
+  "game": "envelope-challenge",
+  "prerequisites": ["03-budgeting"],
+  "xp_total": 1250,
+  "badges": ["cash-commander", "envelope-champion"]
+}

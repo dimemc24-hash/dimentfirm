@@ -1,0 +1,18 @@
+{
+  "id": "03-budgeting",
+  "title": "Budgeting Foundations",
+  "description": "50/30/20 framework, income calculation, and the Budget Crisis game",
+  "order": 3,
+  "lessons": [
+    { "id": "01-why-budgets-fail", "title": "Why Most Budgets Fail", "duration_min": 25, "xp_available": 150 },
+    { "id": "02-real-income", "title": "Calculating Your Real Income", "duration_min": 35, "xp_available": 200 },
+    { "id": "03-needs-vs-wants", "title": "Needs vs. Wants", "duration_min": 30, "xp_available": 150 },
+    { "id": "04-build-your-budget", "title": "Building Your 50/30/20 Budget", "duration_min": 45, "xp_available": 200 },
+    { "id": "05-tracking-spending", "title": "Tracking Your Spending", "duration_min": 30, "xp_available": 150 },
+    { "id": "06-budget-crisis-game", "title": "Budget Crisis Game", "duration_min": 40, "xp_available": 500 }
+  ],
+  "game": "budget-crisis",
+  "prerequisites": ["02-money-story"],
+  "xp_total": 1350,
+  "badges": ["budget-builder", "crisis-manager", "needs-vs-wants-master"]
+}

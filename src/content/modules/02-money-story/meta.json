@@ -1,0 +1,18 @@
+{
+  "id": "02-money-story",
+  "title": "Your Money Story",
+  "description": "Financial psychology, money narratives, inherited beliefs, and the Belief Trap game",
+  "order": 2,
+  "lessons": [
+    { "id": "01-where-beliefs-come-from", "title": "Where Money Beliefs Come From", "duration_min": 30, "xp_available": 100 },
+    { "id": "02-money-timeline", "title": "Your Money Timeline", "duration_min": 40, "xp_available": 150 },
+    { "id": "03-toxic-money-scripts", "title": "The Four Toxic Money Scripts", "duration_min": 35, "xp_available": 200 },
+    { "id": "04-scarcity-vs-abundance", "title": "Scarcity vs. Abundance Mindset", "duration_min": 30, "xp_available": 150 },
+    { "id": "05-rewrite-narrative", "title": "Rewriting Your Financial Narrative", "duration_min": 35, "xp_available": 150 },
+    { "id": "06-belief-trap-game", "title": "The Belief Trap Game", "duration_min": 30, "xp_available": 350 }
+  ],
+  "game": "belief-trap",
+  "prerequisites": ["01-fresh-start"],
+  "xp_total": 1100,
+  "badges": ["story-rewriter", "belief-breaker"]
+}

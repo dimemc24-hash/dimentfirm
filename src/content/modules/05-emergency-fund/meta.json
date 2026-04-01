@@ -1,0 +1,17 @@
+{
+  "id": "05-emergency-fund",
+  "title": "Building Your Emergency Fund",
+  "description": "Emergency vs slush fund, $1,000 plan, and the Savings Sprint game",
+  "order": 5,
+  "lessons": [
+    { "id": "01-why-emergency-fund", "title": "Why You Need an Emergency Fund", "duration_min": 25, "xp_available": 150 },
+    { "id": "02-true-emergencies", "title": "What Is a True Emergency?", "duration_min": 30, "xp_available": 200 },
+    { "id": "03-thousand-dollar-plan", "title": "Your $1,000 Starter Fund Plan", "duration_min": 35, "xp_available": 200 },
+    { "id": "04-automate-savings", "title": "Automating Your Savings", "duration_min": 30, "xp_available": 200 },
+    { "id": "05-savings-sprint", "title": "Savings Sprint Game", "duration_min": 35, "xp_available": 550 }
+  ],
+  "game": "savings-sprint",
+  "prerequisites": ["04-envelope-system"],
+  "xp_total": 1300,
+  "badges": ["emergency-fund-started", "savings-streak"]
+}

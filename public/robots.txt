@@ -1,0 +1,18 @@
+# Fresh Start Academy — robots.txt
+# https://freshstartacademy.com
+
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /module/
+Disallow: /arcade
+Disallow: /game/
+Disallow: /profile
+Disallow: /badges
+Disallow: /settings
+Disallow: /billing
+Disallow: /admin
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://freshstartacademy.com/sitemap.xml

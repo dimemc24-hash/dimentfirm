@@ -1,0 +1,19 @@
+{
+  "id": "07-credit-rebuilding",
+  "title": "Credit Rebuilding",
+  "description": "Credit reports, FICO scores, secured cards, dispute letters, and Credit Score Simulator",
+  "order": 7,
+  "lessons": [
+    { "id": "01-credit-audit", "title": "Your Credit Report: The 90-Day Audit", "duration_min": 35, "xp_available": 150 },
+    { "id": "02-how-scores-work", "title": "How Credit Scores Work", "duration_min": 35, "xp_available": 200 },
+    { "id": "03-secured-cards", "title": "Secured Credit Cards", "duration_min": 30, "xp_available": 150 },
+    { "id": "04-credit-builder", "title": "Credit Builder Loans & Authorized User", "duration_min": 25, "xp_available": 150 },
+    { "id": "05-dispute-letters", "title": "Writing a Dispute Letter", "duration_min": 35, "xp_available": 150 },
+    { "id": "06-utilization", "title": "Credit Utilization Optimizer", "duration_min": 25, "xp_available": 150 },
+    { "id": "07-credit-sim", "title": "Credit Score Simulator Game", "duration_min": 40, "xp_available": 300 }
+  ],
+  "game": "credit-score-sim",
+  "prerequisites": ["06-healing"],
+  "xp_total": 1250,
+  "badges": ["credit-auditor", "dispute-pro", "score-builder", "credit-master"]
+}

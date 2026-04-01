@@ -1,0 +1,18 @@
+{
+  "id": "10-road-map",
+  "title": "Your 12-Month Financial Road Map",
+  "description": "Major purchases, Letter of Explanation, capstone road map, and graduation",
+  "order": 10,
+  "lessons": [
+    { "id": "01-whats-next", "title": "What's Next After Bankruptcy", "duration_min": 25, "xp_available": 100 },
+    { "id": "02-major-purchases", "title": "Major Purchases: Car, Home, Credit", "duration_min": 35, "xp_available": 150 },
+    { "id": "03-letter-explanation", "title": "Your Letter of Explanation", "duration_min": 40, "xp_available": 150 },
+    { "id": "04-road-map-capstone", "title": "Your 12-Month Road Map (Capstone)", "duration_min": 60, "xp_available": 600 },
+    { "id": "05-commitment-contract", "title": "Your Commitment Contract", "duration_min": 20, "xp_available": 150 },
+    { "id": "06-graduation", "title": "Graduation & Final Assessment", "duration_min": 30, "xp_available": 250 }
+  ],
+  "game": null,
+  "prerequisites": ["09-income-growth"],
+  "xp_total": 1400,
+  "badges": ["letter-writer", "road-map-ready", "commitment-keeper", "course-graduate"]
+}

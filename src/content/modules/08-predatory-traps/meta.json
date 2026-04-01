@@ -1,0 +1,17 @@
+{
+  "id": "08-predatory-traps",
+  "title": "Avoiding Predatory Traps",
+  "description": "Predatory lenders, red flags, APR calculation, and Predatory Lending Detector game",
+  "order": 8,
+  "lessons": [
+    { "id": "01-why-targeted", "title": "Why You're a Target", "duration_min": 30, "xp_available": 150 },
+    { "id": "02-five-predators", "title": "The Five Predatory Players", "duration_min": 35, "xp_available": 200 },
+    { "id": "03-red-flags", "title": "12 Red Flags in Any Financial Offer", "duration_min": 30, "xp_available": 150 },
+    { "id": "04-apr-calculator", "title": "Calculating the True Cost of a Loan", "duration_min": 30, "xp_available": 200 },
+    { "id": "05-detector-game", "title": "Predatory Lending Detector Game", "duration_min": 40, "xp_available": 300 }
+  ],
+  "game": "predatory-lending-detector",
+  "prerequisites": ["07-credit-rebuilding"],
+  "xp_total": 1000,
+  "badges": ["trap-spotter", "apr-calculator"]
+}
