@@ -24,15 +24,20 @@ export default function Navigation() {
 
         {/* Desktop Nav */}
         <nav className="nav-links desktop-only">
-          <Link to="/sheldon" className="nav-link">Sheldon's Path (Chapter 13)</Link>
-          <Link to="/hariette" className="nav-link">Hariette's Path (Chapter 7)</Link>
+          <Link to="/sheldon" className="nav-link">
+            Sheldon's Path
+            <span className="nav-link-sub">Chapter 13</span>
+          </Link>
+          <Link to="/hariette" className="nav-link">
+            Hariette's Path
+            <span className="nav-link-sub">Chapter 7</span>
+          </Link>
           <Link to="/family-law" className="nav-link">Family Law</Link>
           <Link to="/small-business" className="nav-link">Small Business</Link>
-          <Link to="/academy" className="nav-link">Fresh Start Academy</Link>
+          <Link to="/academy" className="nav-link">Academy</Link>
           <a
             href="https://outlook.office.com/book/DimentAssociatesAppointmentsPublicCopy@dimentfirm.com/?ismsaljsauthenabled"
             className="btn btn-nav-action"
-            style={{ fontSize: '0.9rem', padding: '0.5rem 1rem' }}
           >
             Free Consultation
           </a>
@@ -76,12 +81,12 @@ export default function Navigation() {
           box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
         .nav-container {
-          max-width: var(--max-width, 1200px);
+          max-width: 1400px;
           margin: 0 auto;
-          padding: 0 var(--spacing-lg, 2rem);
+          padding: 0 1.5rem;
           display: flex;
-          justify-content: space-between;
           align-items: center;
+          gap: 2rem;
         }
         .nav-logo {
           font-family: var(--font-heading);
@@ -93,6 +98,7 @@ export default function Navigation() {
           gap: 0.75rem;
           text-decoration: none;
           flex-shrink: 0;
+          margin-right: auto;
         }
         .logo-img {
           height: 36px !important;
@@ -105,14 +111,23 @@ export default function Navigation() {
         .nav-links {
           display: flex;
           align-items: center;
-          gap: 1.25rem;
+          gap: 1.5rem;
           font-size: 0.9rem;
+          flex-shrink: 0;
         }
         .nav-link {
           font-weight: 500;
           color: var(--color-text-main);
           position: relative;
-          white-space: nowrap;
+          text-align: center;
+          line-height: 1.3;
+        }
+        .nav-link-sub {
+          display: block;
+          font-size: 0.7rem;
+          font-weight: 400;
+          opacity: 0.7;
+          letter-spacing: 0.03em;
         }
         .nav-link::after {
           content: '';
@@ -180,6 +195,14 @@ export default function Navigation() {
           background-color: white;
           color: var(--color-text-main);
           border: 2px solid white;
+          padding: 0.5rem 1.25rem;
+          border-radius: 9999px;
+          font-family: var(--font-heading);
+          font-weight: 600;
+          font-size: 0.85rem;
+          white-space: nowrap;
+          margin-left: 0.5rem;
+          transition: all 0.2s ease;
         }
         .btn-nav-action:hover {
           background-color: transparent;
