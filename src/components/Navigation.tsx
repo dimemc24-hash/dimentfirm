@@ -18,7 +18,7 @@ export default function Navigation() {
     <header className={`nav-header ${scrolled ? 'scrolled' : ''}`}>
       <div className="container nav-container">
         <Link to="/" className="nav-logo">
-          <img src="/logo.png" alt="Diment & Associates Logo" className="logo-img" />
+          <img src="/logo.png" alt="Diment & Associates Logo" className="logo-img" style={{ height: '36px', width: 'auto' }} />
           <span className="logo-text">Diment & Associates</span>
         </Link>
 
@@ -76,6 +76,9 @@ export default function Navigation() {
           box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
         .nav-container {
+          max-width: var(--max-width, 1200px);
+          margin: 0 auto;
+          padding: 0 var(--spacing-lg, 2rem);
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -88,21 +91,28 @@ export default function Navigation() {
           display: flex;
           align-items: center;
           gap: 0.75rem;
+          text-decoration: none;
+          flex-shrink: 0;
         }
         .logo-img {
-          height: 36px;
-          width: auto;
+          height: 36px !important;
+          width: auto !important;
           object-fit: contain;
+        }
+        .logo-text {
+          white-space: nowrap;
         }
         .nav-links {
           display: flex;
           align-items: center;
-          gap: 2rem;
+          gap: 1.25rem;
+          font-size: 0.9rem;
         }
         .nav-link {
           font-weight: 500;
           color: var(--color-text-main);
           position: relative;
+          white-space: nowrap;
         }
         .nav-link::after {
           content: '';
@@ -120,14 +130,28 @@ export default function Navigation() {
         .mobile-only {
           display: none;
         }
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
           .desktop-only { display: none; }
           .mobile-only { display: block; }
+          .nav-header {
+            padding: 0.5rem 0;
+          }
+          .nav-container {
+            padding: 0 1rem;
+          }
+          .nav-logo {
+            font-size: 1.1rem;
+            gap: 0.5rem;
+          }
+          .logo-img {
+            height: 28px !important;
+          }
           .mobile-toggle {
             background: none;
             border: none;
             cursor: pointer;
             color: var(--color-text-main);
+            padding: 0.5rem;
           }
           .mobile-nav {
             position: absolute;
@@ -138,13 +162,17 @@ export default function Navigation() {
             padding: 1rem;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.25rem;
             border-bottom: 1px solid var(--color-border);
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
           }
           .mobile-nav a {
-            padding: 0.5rem;
+            padding: 0.75rem 1rem;
             font-weight: 500;
+            border-radius: 8px;
+          }
+          .mobile-nav a:active {
+            background: var(--color-turtle-green-light);
           }
         }
         
