@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="footer-col">
           <h3 className="footer-logo">Diment & Associates</h3>
           <p className="footer-desc">
-            Bankruptcy is a legal tool, not a moral failure. Both paths lead to freedom. We're here to help you pick your speed.
+            Full-service legal guidance for individuals, families, and small businesses across Baton Rouge and Louisiana.
           </p>
           <p className="footer-contact">
             <strong>Phone:</strong> 225-612-0765<br />
@@ -16,28 +16,28 @@ export default function Footer() {
         </div>
 
         <div className="footer-col">
-          <h4>Your Paths</h4>
+          <h4>Practice Areas</h4>
           <ul>
-            <li><Link to="/sheldon">Sheldon's Path (The Tortoise)</Link></li>
-            <li><Link to="/hariette">Hariette's Path (The Hare)</Link></li>
-            <li><Link to="/quiz">Are you a Tortoise or Hare?</Link></li>
-            <li><Link to="/academy">Fresh Start Academy</Link></li>
+            <li><Link to="/bankruptcy">Bankruptcy</Link></li>
+            <li><Link to="/family-law">Family Law</Link></li>
+            <li><Link to="/small-business">Small Business</Link></li>
+            <li><Link to="/taxes">Taxes & Accounting</Link></li>
           </ul>
         </div>
 
         <div className="footer-col">
-          <h4>Other Services</h4>
+          <h4>Resources</h4>
           <ul>
-            <li><Link to="/family-law">Family Law</Link></li>
-            <li><Link to="/small-business">Small Business</Link></li>
-            <li><Link to="/criminal-law">Criminal Law</Link></li>
+            <li><Link to="/sheldon">Sheldon's Path (Chapter 13)</Link></li>
+            <li><Link to="/hariette">Hariette's Path (Chapter 7)</Link></li>
+            <li><Link to="/academy">Fresh Start Academy</Link></li>
           </ul>
         </div>
 
         <div className="footer-col">
           <h4>Join the Community</h4>
           <p style={{ fontSize: '0.9rem', marginBottom: '1rem' }}>
-            We've walked with over 1200 Sheldons and Hariettes. Get your free desk pet and start your journey!
+            We've guided over 1200 clients. Get your free desk pet and start your journey!
           </p>
           <button
             onClick={() => {

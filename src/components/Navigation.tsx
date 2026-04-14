@@ -24,16 +24,10 @@ export default function Navigation() {
 
         {/* Desktop Nav */}
         <nav className="nav-links desktop-only">
-          <Link to="/sheldon" className="nav-link">
-            Sheldon's Path
-            <span className="nav-link-sub">Chapter 13</span>
-          </Link>
-          <Link to="/hariette" className="nav-link">
-            Hariette's Path
-            <span className="nav-link-sub">Chapter 7</span>
-          </Link>
+          <Link to="/bankruptcy" className="nav-link">Bankruptcy</Link>
           <Link to="/family-law" className="nav-link">Family Law</Link>
           <Link to="/small-business" className="nav-link">Small Business</Link>
+          <Link to="/taxes" className="nav-link">Taxes</Link>
           <Link to="/academy" className="nav-link">Academy</Link>
           <a
             href="https://outlook.office.com/book/DimentAssociatesAppointmentsPublicCopy@dimentfirm.com/?ismsaljsauthenabled"
@@ -56,10 +50,10 @@ export default function Navigation() {
       {/* Mobile Nav */}
       {isOpen && (
         <div className="mobile-nav animate-fade-in mobile-only">
-          <Link to="/sheldon" onClick={() => setIsOpen(false)}>Sheldon's Path</Link>
-          <Link to="/hariette" onClick={() => setIsOpen(false)}>Hariette's Path</Link>
+          <Link to="/bankruptcy" onClick={() => setIsOpen(false)}>Bankruptcy</Link>
           <Link to="/family-law" onClick={() => setIsOpen(false)}>Family Law</Link>
           <Link to="/small-business" onClick={() => setIsOpen(false)}>Small Business</Link>
+          <Link to="/taxes" onClick={() => setIsOpen(false)}>Taxes & Accounting</Link>
           <Link to="/academy" onClick={() => setIsOpen(false)}>Fresh Start Academy</Link>
         </div>
       )}
@@ -69,7 +63,7 @@ export default function Navigation() {
           position: sticky;
           top: 0;
           z-index: 100;
-          background: linear-gradient(to right, var(--color-turtle-green) 0%, var(--color-turtle-green) 48%, var(--color-hare-orange) 52%, var(--color-hare-orange) 100%);
+          background: linear-gradient(135deg, var(--color-turtle-green) 0%, #2d6a4f 60%, hsl(210, 25%, 30%) 100%);
           backdrop-filter: blur(10px);
           border-bottom: 1px solid transparent;
           transition: all 0.3s ease;
@@ -92,7 +86,7 @@ export default function Navigation() {
           font-family: var(--font-heading);
           font-weight: 700;
           font-size: 1.5rem;
-          color: var(--color-text-main);
+          color: #fff;
           display: flex;
           align-items: center;
           gap: 0.75rem;
@@ -117,17 +111,13 @@ export default function Navigation() {
         }
         .nav-link {
           font-weight: 500;
-          color: var(--color-text-main);
+          color: rgba(255, 255, 255, 0.9);
           position: relative;
           text-align: center;
           line-height: 1.3;
         }
-        .nav-link-sub {
-          display: block;
-          font-size: 0.7rem;
-          font-weight: 400;
-          opacity: 0.7;
-          letter-spacing: 0.03em;
+        .nav-link:hover {
+          color: #fff;
         }
         .nav-link::after {
           content: '';
@@ -136,7 +126,7 @@ export default function Navigation() {
           left: 0;
           width: 0;
           height: 2px;
-          background: var(--color-text-main);
+          background: #fff;
           transition: width 0.3s ease;
         }
         .nav-link:hover::after {
@@ -165,7 +155,7 @@ export default function Navigation() {
             background: none;
             border: none;
             cursor: pointer;
-            color: var(--color-text-main);
+            color: #fff;
             padding: 0.5rem;
           }
           .mobile-nav {

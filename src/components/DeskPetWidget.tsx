@@ -44,14 +44,22 @@ export default function DeskPetWidget() {
 
             {!submitted ? (
               <div className="modal-body">
-                <h2>Free Fresh Start Desk Pet</h2>
+                <h2>Free Diment &amp; Associates Desk Pet</h2>
                 <p>We're sending free desk pets to Baton Rouge area residents!
-                  Sign up to get a mystery box—you might get a Sheldon (Turtle), a Hariette (Hare), or another friend!</p>
+                  Sign up to get a mystery box — you might get Sheldon, Hariette, Remy, Oakley, or Jasper!</p>
 
                 <div className="mascot-preview">
-                  <div className="mascot-box">🐢</div>
-                  <div className="mascot-box">?</div>
-                  <div className="mascot-box">🐰</div>
+                  {(() => {
+                    const mascots = ['🐢', '🐰', '🦊', '🦉', '🪱'];
+                    const shuffled = [...mascots].sort(() => Math.random() - 0.5);
+                    return (
+                      <>
+                        <div className="mascot-box">{shuffled[0]}</div>
+                        <div className="mascot-box">?</div>
+                        <div className="mascot-box">{shuffled[1]}</div>
+                      </>
+                    );
+                  })()}
                 </div>
 
                 <form onSubmit={handleSubmit} className="pet-form">

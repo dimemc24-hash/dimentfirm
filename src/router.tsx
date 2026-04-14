@@ -8,8 +8,13 @@ import { ErrorBoundary } from './components/ErrorBoundary'
 
 // Firm pages (eagerly loaded — small, public-facing)
 import Home from './pages/Home'
+import Bankruptcy from './pages/Bankruptcy'
 import SheldonPath from './pages/SheldonPath'
 import HariettePath from './pages/HariettePath'
+import FamilyLaw from './pages/FamilyLaw'
+import SmallBusiness from './pages/SmallBusiness'
+import Taxes from './pages/Taxes'
+import MallLanding from './pages/MallLanding'
 import UnderConstruction from './pages/UnderConstruction'
 
 // Academy public pages (eagerly loaded)
@@ -42,13 +47,18 @@ export const router = createBrowserRouter([
     element: <FirmLayout />,
     children: [
       { path: '/', element: <Home /> },
+      { path: '/bankruptcy', element: <Bankruptcy /> },
       { path: '/sheldon', element: <SheldonPath /> },
       { path: '/hariette', element: <HariettePath /> },
-      { path: '/family-law', element: <UnderConstruction title="Family Law" /> },
-      { path: '/small-business', element: <UnderConstruction title="Small Business" /> },
+      { path: '/family-law', element: <FamilyLaw /> },
+      { path: '/small-business', element: <SmallBusiness /> },
+      { path: '/taxes', element: <Taxes /> },
       { path: '/criminal-law', element: <UnderConstruction title="Criminal Law" /> },
     ],
   },
+
+  // ── Mall ad landing page (no firm chrome — focused funnel) ──
+  { path: '/mall', element: <MallLanding /> },
 
   // ── Academy public routes (no firm chrome) ──
   { path: '/academy', element: <AcademyLanding /> },
