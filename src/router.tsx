@@ -19,8 +19,9 @@ import UnderConstruction from './pages/UnderConstruction'
 
 // Academy public pages (eagerly loaded)
 import AcademyLanding from './pages/academy/Landing'
-import Login from './pages/academy/Login'
-import Register from './pages/academy/Register'
+// NOTE: Login, Register, Invite commented out while Coming Soon overlay is active.
+// import Login from './pages/academy/Login'
+// import Register from './pages/academy/Register'
 import NotFound from './pages/academy/NotFound'
 
 // Academy lazy pages
@@ -35,7 +36,7 @@ const Profile = lazy(() => import('./pages/academy/Profile'))
 const Badges = lazy(() => import('./pages/academy/Badges'))
 const Settings = lazy(() => import('./pages/academy/Settings'))
 const Billing = lazy(() => import('./pages/academy/Billing'))
-const Invite = lazy(() => import('./pages/academy/Invite'))
+// const Invite = lazy(() => import('./pages/academy/Invite'))
 const AdminLayout = lazy(() => import('./pages/academy/admin/AdminLayout'))
 const AdminClients = lazy(() => import('./pages/academy/admin/Clients'))
 const AdminInvites = lazy(() => import('./pages/academy/admin/Invites'))
@@ -61,12 +62,17 @@ export const router = createBrowserRouter([
   { path: '/mall', element: <MallLanding /> },
 
   // ── Academy public routes (no firm chrome) ──
+  // NOTE: Login/Register redirect to landing while Coming Soon overlay is active.
+  // Restore these when Academy launches:
+  //   { path: '/academy/login', element: <Login /> },
+  //   { path: '/academy/register', element: <Register /> },
+  //   { path: '/academy/invite/:code', element: <SuspenseWrapper><Invite /></SuspenseWrapper> },
   { path: '/academy', element: <AcademyLanding /> },
-  { path: '/academy/login', element: <Login /> },
-  { path: '/academy/register', element: <Register /> },
+  { path: '/academy/login', element: <AcademyLanding /> },
+  { path: '/academy/register', element: <AcademyLanding /> },
   { path: '/academy/privacy', element: <SuspenseWrapper><Privacy /></SuspenseWrapper> },
   { path: '/academy/terms', element: <SuspenseWrapper><Terms /></SuspenseWrapper> },
-  { path: '/academy/invite/:code', element: <SuspenseWrapper><Invite /></SuspenseWrapper> },
+  { path: '/academy/invite/:code', element: <AcademyLanding /> },
 
   // ── Academy protected routes (with academy AppShell) ──
   {

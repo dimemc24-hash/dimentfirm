@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Outlet, Link, useLocation } from 'react-router-dom'
-import { Menu, X, Home, BookOpen, Gamepad2, Trophy, User, Settings, CreditCard, Shield } from 'lucide-react'
+import { Menu, X, Home, BookOpen, Gamepad2, Trophy, User, Settings, Shield } from 'lucide-react'
 import { MobileBottomNav } from './MobileBottomNav'
 import { cn } from '../../lib/cn'
 
@@ -11,7 +11,6 @@ const navItems = [
   { to: '/academy/badges', label: 'Badges', icon: Trophy },
   { to: '/academy/profile', label: 'Profile', icon: User },
   { to: '/academy/settings', label: 'Settings', icon: Settings },
-  { to: '/academy/billing', label: 'Billing', icon: CreditCard },
 ]
 
 export function AppShell() {
@@ -35,6 +34,7 @@ export function AppShell() {
         <div className="flex items-center gap-2 ml-3">
           <span className="text-lg font-bold text-fresh-blue">Fresh Start</span>
           <span className="text-sm text-gray-500 hidden xs:inline">Academy</span>
+          <span className="bg-amber-100 text-amber-700 text-[10px] px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wide">Beta</span>
         </div>
         <div className="ml-auto flex items-center gap-2">
           <div className="bg-warm-amber/10 text-warm-amber px-2 py-1 rounded-full text-xs font-semibold">
@@ -51,7 +51,10 @@ export function AppShell() {
         sidebarOpen ? 'translate-x-0' : '-translate-x-full'
       )}>
         <div className="p-6 border-b border-gray-100">
-          <h1 className="text-xl font-bold text-fresh-blue">Fresh Start</h1>
+          <div className="flex items-center gap-2">
+            <h1 className="text-xl font-bold text-fresh-blue">Fresh Start</h1>
+            <span className="bg-amber-100 text-amber-700 text-[10px] px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wide">Beta</span>
+          </div>
           <p className="text-sm text-gray-500">Academy</p>
         </div>
 

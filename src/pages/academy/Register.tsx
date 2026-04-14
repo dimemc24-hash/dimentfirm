@@ -1,15 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useSearchParams, useNavigate, Link } from 'react-router-dom'
-import { Elements } from '@stripe/react-stripe-js'
-import { ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react'
-import { CheckoutForm } from '../../components/billing/CheckoutForm'
+import { ArrowRight, CheckCircle } from 'lucide-react'
 import { useAuth } from '../../hooks/useAuth'
-import { getStripe, PLAN } from '../../lib/stripe'
 import { cn } from '../../lib/cn'
 import type { ChapterPath } from '../../types/database'
-import type { Stripe } from '@stripe/stripe-js'
 
-const STEPS = ['Account', 'Payment', 'Ready']
+const STEPS = ['Account', 'Ready']
 
 export default function Register() {
   const [searchParams] = useSearchParams()
@@ -18,7 +14,6 @@ export default function Register() {
 
   const inviteCode = searchParams.get('invite') ?? undefined
   const presetPath = searchParams.get('path') as ChapterPath | null
-  const trialDays = parseInt(searchParams.get('trial') ?? String(PLAN.trialDays))
 
   // Step state
   const [step, setStep] = useState(0)
@@ -30,12 +25,6 @@ export default function Register() {
   const [chapterPath, setChapterPath] = useState<ChapterPath>(presetPath ?? 'ch7')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-
-  // Stripe
-  const [stripeInstance, setStripeInstance] = useState<Stripe | null>(null)
-  useEffect(() => {
-    getStripe().then(s => setStripeInstance(s))
-  }, [])
 
   // Step 1: Create account
   const handleCreateAccount = async (e: React.FormEvent) => {
@@ -54,7 +43,15 @@ export default function Register() {
     setLoading(true)
     try {
       await signUp(email, password, chapterPath, inviteCode)
-      setStep(1) // Move to payment
+
+      // Notify Alayna of new registration (fire-and-forget)
+      fetch('/api/notify-registration', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, chapterPath }),
+      }).catch(() => { /* notification failure shouldn't block signup */ })
+
+      setStep(1) // Skip to confirmation
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Something went wrong. Please try again.'
       setError(message)
@@ -63,21 +60,19 @@ export default function Register() {
     }
   }
 
-  // Step 2: Payment complete
-  const handlePaymentComplete = () => {
-    setStep(2)
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-sky-50 p-4 flex items-center justify-center">
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Start Your Fresh Start</h1>
+          <div className="inline-flex items-center gap-2 mb-3">
+            <h1 className="text-3xl font-bold text-gray-900">Fresh Start Academy</h1>
+            <span className="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded-full font-bold uppercase tracking-wide">Beta</span>
+          </div>
           <p className="text-gray-500 mt-2">
             {inviteCode
-              ? `You've been invited! ${trialDays} days free.`
-              : `${trialDays}-day free trial. No commitment.`}
+              ? "You've been invited! Create your free account."
+              : 'Free for active Diment & Associates clients.'}
           </p>
         </div>
 
@@ -122,6 +117,11 @@ export default function Register() {
               </div>
             )}
 
+            {/* Active client notice */}
+            <div className="bg-blue-50 border border-blue-100 rounded-lg p-3 text-sm text-blue-800">
+              Available to Diment & Associates clients active within the last 6 months. Use the email address on file with our office.
+            </div>
+
             {/* Chapter Path Selection */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">
@@ -141,8 +141,8 @@ export default function Register() {
                   )}
                 >
                   <div className="text-2xl mb-1">🐇</div>
-                  <div className="font-semibold text-sm">Chapter 7</div>
-                  <div className="text-xs text-gray-500 mt-1">Fresh start path</div>
+                  <div className="font-semibold text-sm">Quick Sprint Path</div>
+                  <div className="text-xs text-gray-500 mt-1">Chapter 7</div>
                 </button>
                 <button
                   type="button"
@@ -157,8 +157,8 @@ export default function Register() {
                   )}
                 >
                   <div className="text-2xl mb-1">🐢</div>
-                  <div className="font-semibold text-sm">Chapter 13</div>
-                  <div className="text-xs text-gray-500 mt-1">Plan completed path</div>
+                  <div className="font-semibold text-sm">Steady Path</div>
+                  <div className="text-xs text-gray-500 mt-1">Chapter 13</div>
                 </button>
               </div>
             </div>
@@ -217,7 +217,7 @@ export default function Register() {
                 'Creating account...'
               ) : (
                 <>
-                  Continue to Payment
+                  Create Free Account
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
@@ -232,52 +232,19 @@ export default function Register() {
           </form>
         )}
 
-        {/* Step 2: Payment */}
+        {/* Step 2: Confirmation */}
         {step === 1 && (
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
-            <div className="mb-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-1">Add Payment Method</h2>
-              <p className="text-sm text-gray-500">
-                Start your {trialDays}-day free trial. Cancel anytime.
-              </p>
-            </div>
-
-            {stripeInstance ? (
-              <Elements stripe={stripeInstance}>
-                <CheckoutForm
-                  onComplete={handlePaymentComplete}
-                  trialDays={trialDays}
-                />
-              </Elements>
-            ) : (
-              <div className="py-12 text-center">
-                <p className="text-gray-400 text-sm">Loading payment form...</p>
-              </div>
-            )}
-
-            <button
-              onClick={() => setStep(0)}
-              className="mt-4 flex items-center gap-1.5 text-sm text-gray-400 hover:text-gray-600 transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to account details
-            </button>
-          </div>
-        )}
-
-        {/* Step 3: Confirmation */}
-        {step === 2 && (
           <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 text-center">
             <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="w-10 h-10 text-emerald-600" />
             </div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Welcome to Fresh Start Academy!</h2>
             <p className="text-gray-500 mb-2">
-              Your {trialDays}-day free trial is active. No charge until it ends.
+              Your free account is ready. Please check your email to verify your address.
             </p>
             <p className="text-sm text-gray-400 mb-8">
               You chose the{' '}
-              <strong>{chapterPath === 'ch7' ? 'Chapter 7' : 'Chapter 13'}</strong> path.
+              <strong>{chapterPath === 'ch7' ? 'Quick Sprint Path' : 'Steady Path'}</strong>.
               {chapterPath === 'ch7'
                 ? " 🐇 Hariette is ready to run toward your fresh start!"
                 : " 🐢 Sheldon is ready to walk this journey with you!"}

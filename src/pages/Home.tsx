@@ -232,38 +232,38 @@ export default function Home() {
           cursor: pointer;
         }
         .btn-primary-cta {
-          background: #fff;
-          color: var(--color-turtle-green);
+          background: #fff !important;
+          color: var(--color-turtle-green) !important;
         }
         .btn-primary-cta:hover {
           transform: translateY(-2px);
           box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
         .btn-outline-cta {
-          background: transparent;
-          color: #fff;
-          border: 2px solid rgba(255,255,255,0.6);
+          background: transparent !important;
+          color: #fff !important;
+          border: 2px solid rgba(255,255,255,0.6) !important;
         }
         .btn-outline-cta:hover {
-          background: rgba(255,255,255,0.12);
-          border-color: #fff;
+          background: rgba(255,255,255,0.12) !important;
+          border-color: #fff !important;
         }
         .btn-white-cta {
-          background: #fff;
-          color: var(--color-text-main);
+          background: #fff !important;
+          color: var(--color-text-main) !important;
         }
         .btn-white-cta:hover {
           transform: translateY(-2px);
           box-shadow: 0 6px 20px rgba(0,0,0,0.2);
         }
         .btn-outline-white-cta {
-          background: transparent;
-          color: #fff;
-          border: 2px solid rgba(255,255,255,0.5);
+          background: transparent !important;
+          color: #fff !important;
+          border: 2px solid rgba(255,255,255,0.5) !important;
         }
         .btn-outline-white-cta:hover {
-          background: rgba(255,255,255,0.1);
-          border-color: #fff;
+          background: rgba(255,255,255,0.1) !important;
+          border-color: #fff !important;
         }
 
         /* ---------- Section helpers ---------- */

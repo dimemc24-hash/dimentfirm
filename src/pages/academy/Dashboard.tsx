@@ -5,14 +5,12 @@ import {
   CheckCircle, Lock, ArrowRight,
 } from 'lucide-react'
 import { MascotDialogue } from '../../components/course/MascotDialogue'
-import { TrialBanner } from '../../components/billing/TrialBanner'
 import { useAuth } from '../../hooks/useAuth'
 import { useProfile } from '../../hooks/useProfile'
 import { useXP } from '../../hooks/useXP'
 import { useStreak } from '../../hooks/useStreak'
 import { useModuleProgress } from '../../hooks/useProgress'
 import { useBadges, BADGE_CATALOG, TOTAL_BADGES } from '../../hooks/useBadges'
-import { useSubscription } from '../../hooks/useSubscription'
 import { getModuleList } from '../../lib/content-loader'
 import { cn } from '../../lib/cn'
 import type { ChapterPath } from '../../types/database'
@@ -42,8 +40,6 @@ export default function Dashboard() {
   const { streak } = useStreak(user?.id)
   const { modules: moduleProgress, getModuleStatus } = useModuleProgress(user?.id)
   const { earnedCount, isEarned } = useBadges(user?.id)
-  const { isTrialing, trialDaysLeft } = useSubscription(user?.id)
-
   const chapterPath: ChapterPath = profile?.chapter_path ?? 'ch7'
   const moduleList = getModuleList()
   const currentStreak = streak?.current_streak ?? 0
@@ -84,9 +80,6 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-6 pb-16">
-      {/* Trial banner */}
-      {isTrialing && <TrialBanner daysLeft={trialDaysLeft} />}
-
       {/* A. Mascot Greeting */}
       <MascotDialogue
         mascotType={chapterPath === 'ch7' ? 'ch7' : 'ch13'}

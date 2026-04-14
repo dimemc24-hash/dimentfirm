@@ -1,24 +1,14 @@
 import { useState } from 'react'
 import {
   User, Mail, BookOpen, Calendar, Zap, Flame, Award,
-  CreditCard, Edit3, Check, X,
+  Edit3, Check, X,
 } from 'lucide-react'
 import { useAuth } from '../../hooks/useAuth'
 import { useProfile } from '../../hooks/useProfile'
 import { useXP } from '../../hooks/useXP'
 import { useStreak } from '../../hooks/useStreak'
 import { useBadges, TOTAL_BADGES } from '../../hooks/useBadges'
-import { useSubscription } from '../../hooks/useSubscription'
 import { cn } from '../../lib/cn'
-
-const STATUS_LABELS: Record<string, { label: string; color: string }> = {
-  trialing: { label: 'Free Trial', color: 'bg-blue-100 text-blue-700' },
-  active: { label: 'Active', color: 'bg-green-100 text-green-700' },
-  past_due: { label: 'Past Due', color: 'bg-amber-100 text-amber-700' },
-  suspended: { label: 'Suspended', color: 'bg-red-100 text-red-600' },
-  canceled: { label: 'Canceled', color: 'bg-gray-100 text-gray-500' },
-  comp: { label: 'Complimentary', color: 'bg-purple-100 text-purple-700' },
-}
 
 export default function Profile() {
   const { user } = useAuth()
@@ -26,8 +16,6 @@ export default function Profile() {
   const { totalXP, level, levelName, nextLevel } = useXP(profile)
   const { streak } = useStreak(user?.id)
   const { earnedCount } = useBadges(user?.id)
-  const { subscription, isTrialing, trialDaysLeft } = useSubscription(user?.id)
-
   const [editing, setEditing] = useState(false)
   const [editName, setEditName] = useState('')
   const [saving, setSaving] = useState(false)
@@ -75,8 +63,6 @@ export default function Profile() {
       </div>
     )
   }
-
-  const subStatus = subscription ? STATUS_LABELS[subscription.status] : null
 
   return (
     <div className="max-w-2xl mx-auto space-y-6">
@@ -140,12 +126,9 @@ export default function Profile() {
               <p className="text-sm text-gray-400 mt-0.5">{profile.email}</p>
             </div>
 
-            {subStatus && (
-              <span className={cn('px-3 py-1 rounded-full text-xs font-medium', subStatus.color)}>
-                {subStatus.label}
-                {isTrialing && trialDaysLeft > 0 && ` · ${trialDaysLeft}d left`}
-              </span>
-            )}
+            <span className={cn('px-3 py-1 rounded-full text-xs font-medium', 'bg-amber-100 text-amber-700')}>
+              Beta Access
+            </span>
           </div>
         </div>
       </div>
@@ -215,19 +198,6 @@ export default function Profile() {
           label="Email"
           value={profile.email}
         />
-        {subscription && (
-          <DetailRow
-            icon={<CreditCard className="w-4 h-4 text-gray-400" />}
-            label="Subscription"
-            value={
-              subscription.status === 'trialing'
-                ? `Free trial ends ${formatDate(subscription.trial_ends_at)}`
-                : subscription.status === 'active'
-                ? `Active — renews ${formatDate(subscription.current_period_end)}`
-                : subscription.status
-            }
-          />
-        )}
         {profile.invited_by && (
           <DetailRow
             icon={<User className="w-4 h-4 text-gray-400" />}
