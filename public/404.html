@@ -5,13 +5,14 @@
     <title>Diment & Associates</title>
     <script>
       // Single-page app redirect for GitHub Pages
-      // Redirects all 404s back to index.html with the path preserved
-      var pathSegmentsToKeep = 0;
+      // Keeps /dimentfirm/ prefix, redirects path into query string for index.html to pick up
+      var repo = '/dimentfirm';
       var l = window.location;
+      var path = l.pathname.slice(repo.length);
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        repo + '/?/' +
+        path.replace(/&/g, '~and~') +
         (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
         l.hash
       );

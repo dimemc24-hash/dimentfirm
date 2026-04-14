@@ -41,6 +41,8 @@ const AdminClients = lazy(() => import('./pages/academy/admin/Clients'))
 const AdminInvites = lazy(() => import('./pages/academy/admin/Invites'))
 const AdminAnalytics = lazy(() => import('./pages/academy/admin/Analytics'))
 
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/';
+
 export const router = createBrowserRouter([
   // ── Firm public routes (with firm nav/footer) ──
   {
@@ -102,4 +104,4 @@ export const router = createBrowserRouter([
 
   // ── Catch-all ──
   { path: '*', element: <NotFound /> },
-])
+], { basename })
