@@ -41,7 +41,7 @@ export function registerSW(callbacks: SWRegistrationCallbacks = {}): void {
   }
 
   window.addEventListener('load', () => {
-    const swUrl = `${import.meta.env.BASE_URL}sw.js`;
+    const swUrl = '/sw.js';
 
     if (IS_LOCALHOST && isDev) {
       // In localhost dev mode, check if SW exists before registering
