@@ -4,14 +4,47 @@ import { Gift, X } from 'lucide-react';
 export default function DeskPetWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setIsOpen(false);
-      setSubmitted(false);
-    }, 4000);
+    setError(null);
+    setSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const name = String(formData.get('name') ?? '').trim();
+    const email = String(formData.get('email') ?? '').trim();
+    const mailingAddress = String(formData.get('mailingAddress') ?? '').trim();
+
+    if (!name || !email || !mailingAddress) {
+      setError('Please fill in all fields.');
+      setSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/notify-deskpet', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, mailingAddress }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Request failed');
+      }
+
+      setSubmitted(true);
+      setTimeout(() => {
+        setIsOpen(false);
+        setSubmitted(false);
+      }, 4000);
+    } catch (err) {
+      setError('Something went wrong. Please try again or call us at 225-612-0765.');
+      console.error('Desk pet submission error:', err);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   useEffect(() => {
@@ -63,17 +96,27 @@ export default function DeskPetWidget() {
                 </div>
 
                 <form onSubmit={handleSubmit} className="pet-form">
+                  {error && (
+                    <div style={{ background: '#fef3c7', border: '1px solid #fcd34d', color: '#92400e', padding: '0.75rem', borderRadius: '8px', fontSize: '0.875rem', marginBottom: '1rem' }}>
+                      {error}
+                    </div>
+                  )}
                   <div className="form-group">
-                    <input type="text" placeholder="Your Name" required />
+                    <input name="name" type="text" placeholder="Your Name" required disabled={submitting} />
                   </div>
                   <div className="form-group">
-                    <input type="email" placeholder="Email Address" required />
+                    <input name="email" type="email" placeholder="Email Address" required disabled={submitting} />
                   </div>
                   <div className="form-group">
-                    <textarea placeholder="Mailing Address" rows={2} required></textarea>
+                    <textarea name="mailingAddress" placeholder="Mailing Address" rows={2} required disabled={submitting}></textarea>
                   </div>
-                  <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
-                    Request My Surprise Pet
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    style={{ width: '100%', opacity: submitting ? 0.6 : 1, cursor: submitting ? 'wait' : 'pointer' }}
+                    disabled={submitting}
+                  >
+                    {submitting ? 'Sending...' : 'Request My Surprise Pet'}
                   </button>
                   <p className="form-note">By requesting a pet, you subscribe to our quarterly newsletter.</p>
                 </form>

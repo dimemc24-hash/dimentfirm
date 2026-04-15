@@ -15,6 +15,7 @@ import FamilyLaw from './pages/FamilyLaw'
 import SmallBusiness from './pages/SmallBusiness'
 import Taxes from './pages/Taxes'
 import MallLanding from './pages/MallLanding'
+import FirmAdmin from './pages/FirmAdmin'
 import UnderConstruction from './pages/UnderConstruction'
 
 // Academy public pages (eagerly loaded)
@@ -55,6 +56,7 @@ export const router = createBrowserRouter([
       { path: '/small-business', element: <SmallBusiness /> },
       { path: '/taxes', element: <Taxes /> },
       { path: '/criminal-law', element: <UnderConstruction title="Criminal Law" /> },
+      { path: '/firm-admin', element: <FirmAdmin /> },
     ],
   },
 
