@@ -12,12 +12,12 @@ const articles = [
     readTime: '8 min read',
   },
   {
-    to: '/blog/louisiana-bankruptcy-exemptions',
-    title: 'Louisiana Bankruptcy Exemptions: What You Can Keep',
-    description: 'Home equity, your vehicle, retirement accounts, personal property — a complete breakdown of what Louisiana law protects when you file bankruptcy.',
-    badge: 'Exemptions',
+    to: '/blog/debt-settlement-vs-bankruptcy',
+    title: 'Debt Settlement vs. Bankruptcy: What Settlement Companies Won\'t Tell You',
+    description: 'The ads make debt settlement sound better than bankruptcy — but years of credit damage, 15–25% fees, lawsuit exposure, and 1099-C tax bills tell a different story. An honest comparison.',
+    badge: 'Debt Settlement',
     badgeColor: 'neutral',
-    readTime: '7 min read',
+    readTime: '9 min read',
   },
   {
     to: '/blog/chapter-7-vs-chapter-13',
@@ -41,14 +41,6 @@ const articles = [
     description: 'Most Louisiana filers keep their vehicles. Learn the $7,500 vehicle exemption, reaffirmation agreements, how to stop repossession, and Chapter 13\'s cramdown option.',
     badge: 'Vehicle',
     badgeColor: 'hare',
-    readTime: '8 min read',
-  },
-  {
-    to: '/blog/bankruptcy-means-test',
-    title: 'The Bankruptcy Means Test in Louisiana Explained',
-    description: 'The means test determines whether you qualify for Chapter 7. Learn the Louisiana median income thresholds, how allowed expenses work, and what happens if you don\'t pass.',
-    badge: 'Means Test',
-    badgeColor: 'turtle',
     readTime: '8 min read',
   },
   {
@@ -76,12 +68,20 @@ const articles = [
     readTime: '6 min read',
   },
   {
-    to: '/blog/debt-settlement-vs-bankruptcy',
-    title: 'Debt Settlement vs. Bankruptcy: What Settlement Companies Won\'t Tell You',
-    description: 'The ads make debt settlement sound better than bankruptcy — but years of credit damage, 15–25% fees, lawsuit exposure, and 1099-C tax bills tell a different story. An honest comparison.',
-    badge: 'Debt Settlement',
+    to: '/blog/bankruptcy-means-test',
+    title: 'The Bankruptcy Means Test in Louisiana Explained',
+    description: 'The means test determines whether you qualify for Chapter 7. Learn the Louisiana median income thresholds, how allowed expenses work, and what happens if you don\'t pass.',
+    badge: 'Means Test',
+    badgeColor: 'turtle',
+    readTime: '8 min read',
+  },
+  {
+    to: '/blog/louisiana-bankruptcy-exemptions',
+    title: 'Louisiana Bankruptcy Exemptions: What You Can Keep',
+    description: 'Home equity, your vehicle, retirement accounts, personal property — a complete breakdown of what Louisiana law protects when you file bankruptcy.',
+    badge: 'Exemptions',
     badgeColor: 'neutral',
-    readTime: '9 min read',
+    readTime: '7 min read',
   },
 ];
 
