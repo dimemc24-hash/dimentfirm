@@ -28,6 +28,12 @@ export default function Footer() {
         <div className="footer-col">
           <h4>Resources</h4>
           <ul>
+            <li><Link to="/blog">All Guides &amp; Articles</Link></li>
+            <li><Link to="/blog/chapter-7-vs-chapter-13">Chapter 7 vs. Chapter 13</Link></li>
+            <li><Link to="/blog/how-chapter-7-works-louisiana">How Chapter 7 Works</Link></li>
+            <li><Link to="/blog/louisiana-bankruptcy-exemptions">Louisiana Exemptions</Link></li>
+            <li><Link to="/blog/keep-car-bankruptcy-louisiana">Keeping Your Car</Link></li>
+            <li><Link to="/blog/bankruptcy-means-test">The Means Test</Link></li>
             <li><Link to="/sheldon">Sheldon's Path (Chapter 13)</Link></li>
             <li><Link to="/hariette">Hariette's Path (Chapter 7)</Link></li>
             <li><Link to="/academy">Fresh Start Academy</Link></li>

@@ -28,6 +28,7 @@ export default function Navigation() {
           <Link to="/family-law" className="nav-link">Family Law</Link>
           <Link to="/small-business" className="nav-link">Small Business</Link>
           <Link to="/taxes" className="nav-link">Taxes</Link>
+          <Link to="/blog" className="nav-link">Resources</Link>
           <Link to="/academy" className="nav-link">Academy</Link>
           <a
             href="https://outlook.office.com/book/DimentAssociatesAppointmentsPublicCopy@dimentfirm.com/?ismsaljsauthenabled"
@@ -54,6 +55,7 @@ export default function Navigation() {
           <Link to="/family-law" onClick={() => setIsOpen(false)}>Family Law</Link>
           <Link to="/small-business" onClick={() => setIsOpen(false)}>Small Business</Link>
           <Link to="/taxes" onClick={() => setIsOpen(false)}>Taxes & Accounting</Link>
+          <Link to="/blog" onClick={() => setIsOpen(false)}>Resources &amp; Guides</Link>
           <Link to="/academy" onClick={() => setIsOpen(false)}>Fresh Start Academy</Link>
         </div>
       )}

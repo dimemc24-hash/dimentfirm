@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import {
   FileSpreadsheet,
   BookOpen,
@@ -15,6 +16,15 @@ export default function Taxes() {
     'https://outlook.office.com/book/DimentAssociatesAppointmentsPublicCopy@dimentfirm.com/?ismsaljsauthenabled';
 
   return (
+    <>
+    <Helmet>
+      <title>Tax & Accounting Services Baton Rouge | IRS Resolution | Diment & Associates</title>
+      <meta name="description" content="Baton Rouge tax preparation, bookkeeping, IRS resolution, and business tax planning since 2017. No detail too small, no deduction left behind. Free consultation — 225-612-4848." />
+      <link rel="canonical" href="https://dimentfirm.com/taxes" />
+      <meta property="og:title" content="Tax & Accounting Services Baton Rouge | Diment & Associates" />
+      <meta property="og:description" content="Tax prep, bookkeeping, and IRS resolution in Baton Rouge. Serving clients since 2017. Free consultation." />
+      <meta property="og:url" content="https://dimentfirm.com/taxes" />
+    </Helmet>
     <div className="taxes-page animate-fade-in">
 
       {/* Hero Section */}
@@ -465,5 +475,6 @@ export default function Taxes() {
         }
       `}</style>
     </div>
+    </>
   );
 }

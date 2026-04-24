@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Phone, Calendar, Shield, Heart, Smile, ChevronRight } from 'lucide-react';
 
 const CONSULTATION_URL =
@@ -7,6 +8,15 @@ const PHONE = '225-612-0765';
 
 export default function Home() {
   return (
+    <>
+    <Helmet>
+      <title>Baton Rouge Law Firm | Bankruptcy, Family Law & Tax | Diment & Associates</title>
+      <meta name="description" content="Full-service law firm in Baton Rouge, LA serving clients since 2017. Chapter 7 & 13 bankruptcy, stop foreclosure, repossession & garnishment, family law, small business, and tax. Free consultations." />
+      <link rel="canonical" href="https://dimentfirm.com/" />
+      <meta property="og:title" content="Baton Rouge Law Firm | Bankruptcy, Family Law & Tax | Diment & Associates" />
+      <meta property="og:description" content="Full-service law firm in Baton Rouge, LA since 2017. Bankruptcy, family law, small business, and tax. Free consultations." />
+      <meta property="og:url" content="https://dimentfirm.com/" />
+    </Helmet>
     <div className="home-page animate-fade-in">
 
       {/* ── Hero Section ────────────────────────────────────── */}
@@ -448,5 +458,6 @@ export default function Home() {
         }
       `}</style>
     </div>
+    </>
   );
 }

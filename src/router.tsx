@@ -18,6 +18,15 @@ import MallLanding from './pages/MallLanding'
 import FirmAdmin from './pages/FirmAdmin'
 import UnderConstruction from './pages/UnderConstruction'
 
+// Blog articles (lazily loaded)
+const BlogIndex = lazy(() => import('./pages/blog/BlogIndex'))
+const HowChapter7Works = lazy(() => import('./pages/blog/HowChapter7Works'))
+const LouisianaExemptions = lazy(() => import('./pages/blog/LouisianaExemptions'))
+const Chapter7vsChapter13 = lazy(() => import('./pages/blog/Chapter7vsChapter13'))
+const BankruptcyCreditReport = lazy(() => import('./pages/blog/BankruptcyCreditReport'))
+const KeepCarBankruptcy = lazy(() => import('./pages/blog/KeepCarBankruptcy'))
+const BankruptcyMeansTest = lazy(() => import('./pages/blog/BankruptcyMeansTest'))
+
 // Academy public pages (eagerly loaded)
 import AcademyLanding from './pages/academy/Landing'
 // NOTE: Login, Register, Invite commented out while Coming Soon overlay is active.
@@ -57,6 +66,15 @@ export const router = createBrowserRouter([
       { path: '/taxes', element: <Taxes /> },
       { path: '/criminal-law', element: <UnderConstruction title="Criminal Law" /> },
       { path: '/firm-admin', element: <FirmAdmin /> },
+
+      // Blog index + articles
+      { path: '/blog', element: <SuspenseWrapper><BlogIndex /></SuspenseWrapper> },
+      { path: '/blog/how-chapter-7-works-louisiana', element: <SuspenseWrapper><HowChapter7Works /></SuspenseWrapper> },
+      { path: '/blog/louisiana-bankruptcy-exemptions', element: <SuspenseWrapper><LouisianaExemptions /></SuspenseWrapper> },
+      { path: '/blog/chapter-7-vs-chapter-13', element: <SuspenseWrapper><Chapter7vsChapter13 /></SuspenseWrapper> },
+      { path: '/blog/bankruptcy-credit-report', element: <SuspenseWrapper><BankruptcyCreditReport /></SuspenseWrapper> },
+      { path: '/blog/keep-car-bankruptcy-louisiana', element: <SuspenseWrapper><KeepCarBankruptcy /></SuspenseWrapper> },
+      { path: '/blog/bankruptcy-means-test', element: <SuspenseWrapper><BankruptcyMeansTest /></SuspenseWrapper> },
     ],
   },
 

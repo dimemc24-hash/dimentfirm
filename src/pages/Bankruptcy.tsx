@@ -1,9 +1,19 @@
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import Quiz from '../components/Quiz';
 import { Shield, FastForward } from 'lucide-react';
 
 export default function Bankruptcy() {
   return (
+    <>
+    <Helmet>
+      <title>Bankruptcy Attorney Baton Rouge | Chapter 7 & 13 | Diment & Associates</title>
+      <meta name="description" content="Louisiana bankruptcy attorneys helping families since 2017. Stop foreclosure, repossession & wage garnishment. Chapter 7 fresh start or Chapter 13 structured plan. Free evaluation — 225-612-4848." />
+      <link rel="canonical" href="https://dimentfirm.com/bankruptcy" />
+      <meta property="og:title" content="Bankruptcy Attorney Baton Rouge | Chapter 7 & 13 | Diment & Associates" />
+      <meta property="og:description" content="Stop creditor harassment, foreclosure, repossession, and garnishment. Louisiana bankruptcy attorneys since 2017. Free evaluation." />
+      <meta property="og:url" content="https://dimentfirm.com/bankruptcy" />
+    </Helmet>
     <div className="bankruptcy-page animate-fade-in">
 
       {/* Split Hero Section */}
@@ -346,5 +356,6 @@ export default function Bankruptcy() {
         }
       `}</style>
     </div>
+    </>
   );
 }

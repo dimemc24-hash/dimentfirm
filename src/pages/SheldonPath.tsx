@@ -1,8 +1,18 @@
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ShieldCheck, Clock, Home } from 'lucide-react';
 
 export default function SheldonPath() {
     return (
+        <>
+        <Helmet>
+          <title>Chapter 13 Bankruptcy Baton Rouge | Keep Your Home & Car | Diment & Associates</title>
+          <meta name="description" content="Chapter 13 bankruptcy in Louisiana lets you keep your home, stop foreclosure, and catch up on missed payments in one affordable plan. Baton Rouge attorneys since 2017. Free evaluation." />
+          <link rel="canonical" href="https://dimentfirm.com/sheldon" />
+          <meta property="og:title" content="Chapter 13 Bankruptcy Baton Rouge | Keep Your Home & Car | Diment & Associates" />
+          <meta property="og:description" content="Stop foreclosure and keep your home with Chapter 13 bankruptcy. Louisiana attorneys since 2017. Free evaluation." />
+          <meta property="og:url" content="https://dimentfirm.com/sheldon" />
+        </Helmet>
         <div className="path-page animate-fade-in">
 
             {/* Hero */}
@@ -193,5 +203,6 @@ export default function SheldonPath() {
         }
       `}</style>
         </div>
+        </>
     );
 }

@@ -1,9 +1,19 @@
+import { Helmet } from 'react-helmet-async';
 import { HandCoins, FileText, Settings, Gavel, Phone, ArrowRight } from 'lucide-react';
 
 export default function SmallBusiness() {
     const bookingUrl = 'https://outlook.office.com/book/DimentAssociatesAppointmentsPublicCopy@dimentfirm.com/?ismsaljsauthenabled';
 
     return (
+        <>
+        <Helmet>
+          <title>Small Business Attorney Baton Rouge | Contracts & Business Law | Diment & Associates</title>
+          <meta name="description" content="Baton Rouge small business attorneys since 2017. Contracts, business formation, operations advising, and litigation. Sharp-eyed counsel for every stage of your business. Free consultation." />
+          <link rel="canonical" href="https://dimentfirm.com/small-business" />
+          <meta property="og:title" content="Small Business Attorney Baton Rouge | Diment & Associates" />
+          <meta property="og:description" content="Contracts, business law, and litigation for Baton Rouge small businesses. Free consultation." />
+          <meta property="og:url" content="https://dimentfirm.com/small-business" />
+        </Helmet>
         <div className="path-page animate-fade-in">
 
             {/* Hero */}
@@ -398,5 +408,6 @@ export default function SmallBusiness() {
         }
       `}</style>
         </div>
+        </>
     );
 }

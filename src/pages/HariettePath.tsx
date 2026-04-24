@@ -1,8 +1,18 @@
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Zap, CalendarHeart, Trash2 } from 'lucide-react';
 
 export default function HariettePath() {
     return (
+        <>
+        <Helmet>
+          <title>Chapter 7 Bankruptcy Louisiana | Fresh Start in 90 Days | Diment & Associates</title>
+          <meta name="description" content="Eliminate credit card debt, medical bills, and personal loans with Chapter 7 bankruptcy in Louisiana. Discharge in 90–120 days. Stop wage garnishment and creditor harassment. Free evaluation." />
+          <link rel="canonical" href="https://dimentfirm.com/hariette" />
+          <meta property="og:title" content="Chapter 7 Bankruptcy Louisiana | Fresh Start in 90 Days | Diment & Associates" />
+          <meta property="og:description" content="Chapter 7 wipes unsecured debt in 90–120 days. Stop garnishment and creditor calls. Louisiana attorneys since 2017. Free evaluation." />
+          <meta property="og:url" content="https://dimentfirm.com/hariette" />
+        </Helmet>
         <div className="path-page animate-fade-in">
 
             {/* Hero */}
@@ -186,5 +196,6 @@ export default function HariettePath() {
         }
       `}</style>
         </div>
+        </>
     );
 }

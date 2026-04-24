@@ -1,18 +1,21 @@
-# Fresh Start Academy — robots.txt
-# https://freshstartacademy.com
+# Diment & Associates — robots.txt
+# https://dimentfirm.com
 
 User-agent: *
 Allow: /
-Disallow: /dashboard
-Disallow: /module/
-Disallow: /arcade
-Disallow: /game/
-Disallow: /profile
-Disallow: /badges
-Disallow: /settings
-Disallow: /billing
-Disallow: /admin
-Disallow: /admin/
+
+# Academy app (auth-gated, not useful to index)
+Disallow: /academy/dashboard
+Disallow: /academy/module/
+Disallow: /academy/arcade
+Disallow: /academy/game/
+Disallow: /academy/profile
+Disallow: /academy/badges
+Disallow: /academy/settings
+Disallow: /academy/billing
+Disallow: /academy/admin
+Disallow: /academy/admin/
+Disallow: /firm-admin
 
 # Sitemap
-Sitemap: https://freshstartacademy.com/sitemap.xml
+Sitemap: https://dimentfirm.com/sitemap.xml

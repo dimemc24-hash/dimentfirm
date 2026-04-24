@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════
+   Diment & Associates — Design System
+   Ported from the Vite SPA for use in the Next.js migration.
+   ═══════════════════════════════════════════════════════════ */
+
+@theme inline {
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+}
+
+:root {
+  /* Firm color palette */
+  --color-turtle-green:       hsl(152, 60%, 35%);
+  --color-turtle-green-light: hsl(152, 50%, 92%);
+  --color-turtle-brown:       hsl(30, 45%, 45%);
+  --color-turtle-shell:       hsl(45, 60%, 30%);
+
+  --color-hare-orange:        hsl(25, 85%, 55%);
+  --color-hare-orange-light:  hsl(30, 90%, 94%);
+  --color-hare-brown:         hsl(20, 60%, 40%);
+  --color-hare-cream:         hsl(40, 70%, 92%);
+
+  --color-text-main:          hsl(210, 20%, 15%);
+  --color-text-muted:         hsl(210, 15%, 45%);
+  --color-background:         hsl(0, 0%, 99%);
+  --color-border:             hsl(210, 20%, 90%);
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+
+  --border-radius:      12px;
+  --border-radius-lg:   24px;
+  --border-radius-full: 9999px;
+
+  --max-width: 1200px;
+}
+
+/* Base */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-body), 'Inter', sans-serif;
+  color: var(--color-text-main);
+  background: var(--color-background);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), 'Outfit', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text-main);
+}
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+/* Container utility */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}

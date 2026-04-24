@@ -1,9 +1,38 @@
 import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
+import sitemap from 'vite-plugin-sitemap'
 import path from 'path'
 
+const publicRoutes = [
+  // '/' is auto-detected from index.html — do not list it again
+  '/bankruptcy',
+  '/sheldon',
+  '/hariette',
+  '/family-law',
+  '/small-business',
+  '/taxes',
+  '/blog',
+  '/blog/how-chapter-7-works-louisiana',
+  '/blog/louisiana-bankruptcy-exemptions',
+  '/blog/chapter-7-vs-chapter-13',
+  '/blog/bankruptcy-credit-report',
+  '/blog/keep-car-bankruptcy-louisiana',
+  '/blog/bankruptcy-means-test',
+]
+
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    sitemap({
+      hostname: 'https://dimentfirm.com',
+      dynamicRoutes: publicRoutes,
+      exclude: ['/404'],
+      changefreq: 'weekly',
+      priority: 0.8,
+      lastmod: new Date(),
+      readable: true,
+    }),
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
