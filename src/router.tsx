@@ -26,6 +26,10 @@ const Chapter7vsChapter13 = lazy(() => import('./pages/blog/Chapter7vsChapter13'
 const BankruptcyCreditReport = lazy(() => import('./pages/blog/BankruptcyCreditReport'))
 const KeepCarBankruptcy = lazy(() => import('./pages/blog/KeepCarBankruptcy'))
 const BankruptcyMeansTest = lazy(() => import('./pages/blog/BankruptcyMeansTest'))
+const StopWageGarnishment = lazy(() => import('./pages/blog/StopWageGarnishment'))
+const StopRepossession = lazy(() => import('./pages/blog/StopRepossession'))
+const StopForeclosure = lazy(() => import('./pages/blog/StopForeclosure'))
+const DebtSettlementVsBankruptcy = lazy(() => import('./pages/blog/DebtSettlementVsBankruptcy'))
 
 // Academy public pages (eagerly loaded)
 import AcademyLanding from './pages/academy/Landing'
@@ -75,6 +79,10 @@ export const router = createBrowserRouter([
       { path: '/blog/bankruptcy-credit-report', element: <SuspenseWrapper><BankruptcyCreditReport /></SuspenseWrapper> },
       { path: '/blog/keep-car-bankruptcy-louisiana', element: <SuspenseWrapper><KeepCarBankruptcy /></SuspenseWrapper> },
       { path: '/blog/bankruptcy-means-test', element: <SuspenseWrapper><BankruptcyMeansTest /></SuspenseWrapper> },
+      { path: '/blog/stop-wage-garnishment-louisiana', element: <SuspenseWrapper><StopWageGarnishment /></SuspenseWrapper> },
+      { path: '/blog/stop-repossession-louisiana', element: <SuspenseWrapper><StopRepossession /></SuspenseWrapper> },
+      { path: '/blog/stop-foreclosure-louisiana', element: <SuspenseWrapper><StopForeclosure /></SuspenseWrapper> },
+      { path: '/blog/debt-settlement-vs-bankruptcy', element: <SuspenseWrapper><DebtSettlementVsBankruptcy /></SuspenseWrapper> },
     ],
   },
 

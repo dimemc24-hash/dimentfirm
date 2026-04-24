@@ -98,6 +98,38 @@ export default function Bankruptcy() {
         </div>
       </section>
 
+      {/* Related Guides */}
+      <section className="section bg-white">
+        <div className="container" style={{ maxWidth: '860px' }}>
+          <h2 style={{ textAlign: 'center', marginBottom: '0.75rem' }}>Related Guides</h2>
+          <p style={{ textAlign: 'center', color: 'var(--color-text-muted)', marginBottom: '2.5rem', fontSize: '1rem' }}>
+            Learn more about how bankruptcy addresses your specific situation.
+          </p>
+          <div className="bk-guides-list">
+            <Link to="/blog/chapter-7-vs-chapter-13" className="bk-guide-card">
+              <span className="bk-guide-title">Chapter 7 vs. Chapter 13: Which Is Right for You?</span>
+              <span className="bk-guide-arrow">→</span>
+            </Link>
+            <Link to="/blog/stop-foreclosure-louisiana" className="bk-guide-card">
+              <span className="bk-guide-title">How to Stop Foreclosure in Louisiana with Bankruptcy</span>
+              <span className="bk-guide-arrow">→</span>
+            </Link>
+            <Link to="/blog/stop-wage-garnishment-louisiana" className="bk-guide-card">
+              <span className="bk-guide-title">How Bankruptcy Stops Wage Garnishment in Louisiana</span>
+              <span className="bk-guide-arrow">→</span>
+            </Link>
+            <Link to="/blog/stop-repossession-louisiana" className="bk-guide-card">
+              <span className="bk-guide-title">Can Bankruptcy Stop a Vehicle Repossession in Louisiana?</span>
+              <span className="bk-guide-arrow">→</span>
+            </Link>
+            <Link to="/blog/debt-settlement-vs-bankruptcy" className="bk-guide-card">
+              <span className="bk-guide-title">Debt Settlement vs. Bankruptcy: What Settlement Companies Won't Tell You</span>
+              <span className="bk-guide-arrow">→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Philosophy Section */}
       <section className="section bg-light" style={{ backgroundColor: 'var(--color-background)' }}>
         <div className="container">
@@ -143,6 +175,40 @@ export default function Bankruptcy() {
       </section>
 
       <style>{`
+        /* ===== Related Guides ===== */
+        .bk-guides-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+        .bk-guide-card {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 1.5rem;
+          border: 1px solid var(--color-border);
+          border-radius: var(--border-radius-lg);
+          background: var(--color-background);
+          text-decoration: none;
+          color: var(--color-text-main);
+          transition: border-color 0.15s, box-shadow 0.15s;
+        }
+        .bk-guide-card:hover {
+          border-color: var(--color-turtle-green);
+          box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+          color: var(--color-text-main);
+        }
+        .bk-guide-title {
+          font-size: 0.95rem;
+          font-weight: 500;
+        }
+        .bk-guide-arrow {
+          color: var(--color-turtle-green);
+          font-weight: 700;
+          flex-shrink: 0;
+          margin-left: 1rem;
+        }
+
         /* ===== Split Hero ===== */
         .bk-hero-split {
           display: flex;

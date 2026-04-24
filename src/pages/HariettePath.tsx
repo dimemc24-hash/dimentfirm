@@ -88,6 +88,34 @@ export default function HariettePath() {
                 </div>
             </section>
 
+            {/* Related Guides */}
+            <section className="section bg-white">
+              <div className="container" style={{ maxWidth: '800px' }}>
+                <h2 style={{ textAlign: 'center', marginBottom: '0.75rem' }}>Chapter 7 Resources</h2>
+                <p style={{ textAlign: 'center', color: 'var(--color-text-muted)', marginBottom: '2.5rem', fontSize: '1rem' }}>
+                  Everything you need to know about Hariette's path.
+                </p>
+                <div className="hp-guides-list">
+                  <Link to="/blog/how-chapter-7-works-louisiana" className="hp-guide-card">
+                    <span className="hp-guide-title">How Chapter 7 Bankruptcy Works in Louisiana</span>
+                    <span className="hp-guide-arrow">→</span>
+                  </Link>
+                  <Link to="/blog/stop-wage-garnishment-louisiana" className="hp-guide-card">
+                    <span className="hp-guide-title">How Bankruptcy Stops Wage Garnishment in Louisiana</span>
+                    <span className="hp-guide-arrow">→</span>
+                  </Link>
+                  <Link to="/blog/bankruptcy-means-test" className="hp-guide-card">
+                    <span className="hp-guide-title">The Bankruptcy Means Test in Louisiana Explained</span>
+                    <span className="hp-guide-arrow">→</span>
+                  </Link>
+                  <Link to="/blog/bankruptcy-credit-report" className="hp-guide-card">
+                    <span className="hp-guide-title">How Long Does Bankruptcy Stay on My Credit Report?</span>
+                    <span className="hp-guide-arrow">→</span>
+                  </Link>
+                </div>
+              </div>
+            </section>
+
             {/* Testimonial */}
             <section className="section theme-hare text-center">
                 <div className="container" style={{ maxWidth: '800px' }}>
@@ -106,6 +134,31 @@ export default function HariettePath() {
             </section>
 
             <style>{`
+        .hp-guides-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+        .hp-guide-card {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 1.5rem;
+          border: 1px solid var(--color-border);
+          border-radius: var(--border-radius-lg);
+          background: var(--color-background);
+          text-decoration: none;
+          color: var(--color-text-main);
+          transition: border-color 0.15s, box-shadow 0.15s;
+        }
+        .hp-guide-card:hover {
+          border-color: var(--color-hare-orange);
+          box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+          color: var(--color-text-main);
+        }
+        .hp-guide-title { font-size: 0.95rem; font-weight: 500; }
+        .hp-guide-arrow { color: var(--color-hare-orange); font-weight: 700; flex-shrink: 0; margin-left: 1rem; }
+
         .path-hero {
           padding: 6rem 2rem;
           margin-bottom: 2rem;

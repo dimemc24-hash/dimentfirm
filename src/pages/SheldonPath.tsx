@@ -95,6 +95,34 @@ export default function SheldonPath() {
                 </div>
             </section>
 
+            {/* Related Guides */}
+            <section className="section bg-white">
+              <div className="container" style={{ maxWidth: '800px' }}>
+                <h2 style={{ textAlign: 'center', marginBottom: '0.75rem' }}>Chapter 13 Resources</h2>
+                <p style={{ textAlign: 'center', color: 'var(--color-text-muted)', marginBottom: '2.5rem', fontSize: '1rem' }}>
+                  Deeper reading on what Chapter 13 can do for you.
+                </p>
+                <div className="sp-guides-list">
+                  <Link to="/blog/stop-foreclosure-louisiana" className="sp-guide-card">
+                    <span className="sp-guide-title">How to Stop Foreclosure in Louisiana with Bankruptcy</span>
+                    <span className="sp-guide-arrow">→</span>
+                  </Link>
+                  <Link to="/blog/stop-repossession-louisiana" className="sp-guide-card">
+                    <span className="sp-guide-title">Can Bankruptcy Stop a Vehicle Repossession in Louisiana?</span>
+                    <span className="sp-guide-arrow">→</span>
+                  </Link>
+                  <Link to="/blog/chapter-7-vs-chapter-13" className="sp-guide-card">
+                    <span className="sp-guide-title">Chapter 7 vs. Chapter 13: Which Is Right for You?</span>
+                    <span className="sp-guide-arrow">→</span>
+                  </Link>
+                  <Link to="/blog/bankruptcy-means-test" className="sp-guide-card">
+                    <span className="sp-guide-title">The Bankruptcy Means Test in Louisiana Explained</span>
+                    <span className="sp-guide-arrow">→</span>
+                  </Link>
+                </div>
+              </div>
+            </section>
+
             {/* Testimonial */}
             <section className="section theme-turtle text-center">
                 <div className="container" style={{ maxWidth: '800px' }}>
@@ -113,6 +141,31 @@ export default function SheldonPath() {
             </section>
 
             <style>{`
+        .sp-guides-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+        .sp-guide-card {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 1.5rem;
+          border: 1px solid var(--color-border);
+          border-radius: var(--border-radius-lg);
+          background: var(--color-background);
+          text-decoration: none;
+          color: var(--color-text-main);
+          transition: border-color 0.15s, box-shadow 0.15s;
+        }
+        .sp-guide-card:hover {
+          border-color: var(--color-turtle-green);
+          box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+          color: var(--color-text-main);
+        }
+        .sp-guide-title { font-size: 0.95rem; font-weight: 500; }
+        .sp-guide-arrow { color: var(--color-turtle-green); font-weight: 700; flex-shrink: 0; margin-left: 1rem; }
+
         .path-hero {
           padding: 6rem 2rem;
           margin-bottom: 2rem;

@@ -51,6 +51,38 @@ const articles = [
     badgeColor: 'turtle',
     readTime: '8 min read',
   },
+  {
+    to: '/blog/stop-foreclosure-louisiana',
+    title: 'How to Stop Foreclosure in Louisiana with Bankruptcy',
+    description: 'Chapter 13 stops foreclosure the moment you file and gives you 3–5 years to cure arrears. Learn how the automatic stay works, lien stripping, and what Chapter 7 can and can\'t do.',
+    badge: 'Foreclosure',
+    badgeColor: 'turtle',
+    readTime: '7 min read',
+  },
+  {
+    to: '/blog/stop-repossession-louisiana',
+    title: 'Can Bankruptcy Stop a Vehicle Repossession in Louisiana?',
+    description: 'Louisiana is a self-help repo state — a lender can take your car without notice. Bankruptcy stops it immediately. Learn about the automatic stay, cramdown, and recovering a recently repossessed vehicle.',
+    badge: 'Repossession',
+    badgeColor: 'hare',
+    readTime: '6 min read',
+  },
+  {
+    to: '/blog/stop-wage-garnishment-louisiana',
+    title: 'How Bankruptcy Stops Wage Garnishment in Louisiana',
+    description: 'A creditor is taking 25% of your paycheck. Bankruptcy stops that immediately — your very next paycheck is full. Learn how the automatic stay works and whether Chapter 7 or 13 is the right move.',
+    badge: 'Garnishment',
+    badgeColor: 'hare',
+    readTime: '6 min read',
+  },
+  {
+    to: '/blog/debt-settlement-vs-bankruptcy',
+    title: 'Debt Settlement vs. Bankruptcy: What Settlement Companies Won\'t Tell You',
+    description: 'The ads make debt settlement sound better than bankruptcy — but years of credit damage, 15–25% fees, lawsuit exposure, and 1099-C tax bills tell a different story. An honest comparison.',
+    badge: 'Debt Settlement',
+    badgeColor: 'neutral',
+    readTime: '9 min read',
+  },
 ];
 
 const badgeStyles: Record<string, { bg: string; color: string }> = {

@@ -40,6 +40,30 @@ const articles: Record<string, { title: string; description: string; sourceFile:
       'The means test determines whether you qualify for Chapter 7 in Louisiana. Learn how it works, the income thresholds, and what happens if you don\'t pass.',
     sourceFile: 'src/pages/blog/BankruptcyMeansTest.tsx',
   },
+  'stop-wage-garnishment-louisiana': {
+    title: 'How Bankruptcy Stops Wage Garnishment in Louisiana',
+    description:
+      'Bankruptcy stops wage garnishment immediately through the automatic stay. Learn how filing halts it on your next paycheck, and whether Chapter 7 or 13 is the right move.',
+    sourceFile: 'src/pages/blog/StopWageGarnishment.tsx',
+  },
+  'stop-repossession-louisiana': {
+    title: 'Can Bankruptcy Stop a Vehicle Repossession in Louisiana?',
+    description:
+      'Bankruptcy stops vehicle repossession immediately through the automatic stay. Learn how filing halts a repo in progress, how Chapter 13 lets you keep your car, and what to do if your car was already taken.',
+    sourceFile: 'src/pages/blog/StopRepossession.tsx',
+  },
+  'stop-foreclosure-louisiana': {
+    title: 'How to Stop Foreclosure in Louisiana with Bankruptcy',
+    description:
+      'Bankruptcy stops foreclosure immediately through the automatic stay. Chapter 13 is the most powerful tool for Louisiana homeowners to halt foreclosure, cure mortgage arrears, and keep their home.',
+    sourceFile: 'src/pages/blog/StopForeclosure.tsx',
+  },
+  'debt-settlement-vs-bankruptcy': {
+    title: 'Debt Settlement vs. Bankruptcy: What Settlement Companies Won\'t Tell You',
+    description:
+      'Debt settlement companies promise to cut your debt — but the credit damage, fees, tax consequences, and failure rates tell a different story. An honest comparison for Louisiana residents.',
+    sourceFile: 'src/pages/blog/DebtSettlementVsBankruptcy.tsx',
+  },
 };
 
 // Static generation — tell Next.js all possible slugs at build time.

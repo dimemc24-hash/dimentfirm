@@ -18,6 +18,10 @@ const publicRoutes = [
   '/blog/bankruptcy-credit-report',
   '/blog/keep-car-bankruptcy-louisiana',
   '/blog/bankruptcy-means-test',
+  '/blog/stop-wage-garnishment-louisiana',
+  '/blog/stop-repossession-louisiana',
+  '/blog/stop-foreclosure-louisiana',
+  '/blog/debt-settlement-vs-bankruptcy',
 ]
 
 export default defineConfig({
