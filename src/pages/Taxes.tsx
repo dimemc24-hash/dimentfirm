@@ -10,8 +10,11 @@ import {
   Phone,
   ArrowRight,
 } from 'lucide-react';
+import { useEffect } from 'react';
+import { trackPageView } from '../lib/track';
 
 export default function Taxes() {
+  useEffect(() => { trackPageView('taxes', '/taxes') }, [])
   const bookingUrl =
     'https://outlook.office.com/book/DimentAssociatesAppointmentsPublicCopy@dimentfirm.com/?ismsaljsauthenabled';
 

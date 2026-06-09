@@ -1,10 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { trackConsultationClick } from '../lib/track';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,6 +41,7 @@ export default function Navigation() {
           <a
             href="https://outlook.office.com/book/DimentAssociatesAppointmentsPublicCopy@dimentfirm.com/?ismsaljsauthenabled"
             className="btn btn-nav-action"
+            onClick={() => trackConsultationClick(location.pathname)}
           >
             Free Consultation
           </a>

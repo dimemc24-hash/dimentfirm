@@ -1,10 +1,13 @@
 import { Helmet } from 'react-helmet-async';
 import { Users, Compass, Lightbulb, ArrowRight, Phone } from 'lucide-react';
+import { useEffect } from 'react';
+import { trackPageView } from '../lib/track';
 
 const BOOKING_URL =
     'https://outlook.office.com/book/DimentAssociatesAppointmentsPublicCopy@dimentfirm.com/?ismsaljsauthenabled';
 
 export default function FamilyLaw() {
+  useEffect(() => { trackPageView('family_law', '/family-law') }, [])
     return (
         <>
         <Helmet>

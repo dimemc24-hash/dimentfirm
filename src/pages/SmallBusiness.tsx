@@ -1,7 +1,10 @@
 import { Helmet } from 'react-helmet-async';
 import { HandCoins, FileText, Settings, Gavel, Phone, ArrowRight } from 'lucide-react';
+import { useEffect } from 'react';
+import { trackPageView } from '../lib/track';
 
 export default function SmallBusiness() {
+  useEffect(() => { trackPageView('small_business', '/small-business') }, [])
     const bookingUrl = 'https://outlook.office.com/book/DimentAssociatesAppointmentsPublicCopy@dimentfirm.com/?ismsaljsauthenabled';
 
     return (

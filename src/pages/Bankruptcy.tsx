@@ -2,8 +2,11 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Quiz from '../components/Quiz';
 import { Shield, FastForward } from 'lucide-react';
+import { useEffect } from 'react';
+import { trackPageView } from '../lib/track';
 
 export default function Bankruptcy() {
+  useEffect(() => { trackPageView('bankruptcy', '/bankruptcy') }, [])
   return (
     <>
     <Helmet>
