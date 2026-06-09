@@ -1,4 +1,4 @@
-const NC_CAPTURE_URL = import.meta.env.VITE_NC_CAPTURE_URL as string | undefined
+const NC_CAPTURE_URL = 'https://newchapter-production.up.railway.app/api/leads/website-capture'
 
 type SessionPage = { path: string; practiceArea: string; ts: number }
 
@@ -19,7 +19,6 @@ export function trackPageView(practiceArea: string, path: string) {
 }
 
 export function trackConsultationClick(currentPath: string) {
-  if (!NC_CAPTURE_URL) return
   const practiceArea = inferPracticeArea(currentPath)
   const payload = {
     event: 'consultation_click',
