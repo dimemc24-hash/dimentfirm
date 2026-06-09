@@ -31,6 +31,12 @@ export default function Navigation() {
           <Link to="/blog" className="nav-link">Resources</Link>
           <Link to="/academy" className="nav-link">Academy</Link>
           <a
+            href="https://newchapter-production.up.railway.app/"
+            className="btn btn-nav-login"
+          >
+            Login
+          </a>
+          <a
             href="https://outlook.office.com/book/DimentAssociatesAppointmentsPublicCopy@dimentfirm.com/?ismsaljsauthenabled"
             className="btn btn-nav-action"
           >
@@ -48,6 +54,11 @@ export default function Navigation() {
         </button>
       </div>
 
+      {/* UPDATE Bar */}
+      <div className="update-bar">
+        <strong>UPDATE:</strong> Due to rising costs, our team works from home on Wednesdays &amp; Fridays — the office is available <strong>by appointment only</strong> those days. Walk-ins are welcome <strong>Monday, Tuesday &amp; Thursday</strong>.
+      </div>
+
       {/* Mobile Nav */}
       {isOpen && (
         <div className="mobile-nav animate-fade-in mobile-only">
@@ -57,6 +68,13 @@ export default function Navigation() {
           <Link to="/taxes" onClick={() => setIsOpen(false)}>Taxes & Accounting</Link>
           <Link to="/blog" onClick={() => setIsOpen(false)}>Resources &amp; Guides</Link>
           <Link to="/academy" onClick={() => setIsOpen(false)}>Fresh Start Academy</Link>
+          <a
+            href="https://newchapter-production.up.railway.app/"
+            style={{ fontWeight: 600 }}
+            onClick={() => setIsOpen(false)}
+          >
+            Login
+          </a>
         </div>
       )}
 
@@ -111,17 +129,17 @@ export default function Navigation() {
           font-size: 0.9rem;
           flex-shrink: 0;
         }
-        .nav-link {
+        .nav-header .nav-link {
           font-weight: 500;
-          color: rgba(255, 255, 255, 0.9);
+          color: #fff;
           position: relative;
           text-align: center;
           line-height: 1.3;
         }
-        .nav-link:hover {
-          color: #fff;
+        .nav-header .nav-link:hover {
+          color: rgba(255, 255, 255, 0.8);
         }
-        .nav-link::after {
+        .nav-header .nav-link::after {
           content: '';
           position: absolute;
           bottom: -4px;
@@ -131,8 +149,19 @@ export default function Navigation() {
           background: #fff;
           transition: width 0.3s ease;
         }
-        .nav-link:hover::after {
+        .nav-header .nav-link:hover::after {
           width: 100%;
+        }
+        .update-bar {
+          background: rgba(0, 0, 0, 0.25);
+          color: rgba(255, 255, 255, 0.92);
+          font-size: 0.78rem;
+          text-align: center;
+          padding: 0.4rem 1.5rem;
+          border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .update-bar strong {
+          color: #fff;
         }
         .mobile-only {
           display: none;
@@ -183,6 +212,23 @@ export default function Navigation() {
           }
         }
         
+        .btn-nav-login {
+          background-color: transparent;
+          color: rgba(255, 255, 255, 0.9);
+          border: 2px solid rgba(255, 255, 255, 0.6);
+          padding: 0.5rem 1.1rem;
+          border-radius: 9999px;
+          font-family: var(--font-heading);
+          font-weight: 600;
+          font-size: 0.85rem;
+          white-space: nowrap;
+          transition: all 0.2s ease;
+        }
+        .btn-nav-login:hover {
+          background-color: rgba(255, 255, 255, 0.15);
+          border-color: white;
+          color: white;
+        }
         .btn-nav-action {
           background-color: white;
           color: var(--color-text-main);
