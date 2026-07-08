@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { Phone, ShieldCheck, Zap, Home, Car, CheckCircle, XCircle, CalendarDays } from 'lucide-react';
 
 const BOOKING_URL = 'https://outlook.office.com/book/DimentAssociatesAppointmentsPublicCopy@dimentfirm.com/?ismsaljsauthenabled';
-const PHONE = '225-612-4848';
+const PHONE = '225-612-4404';
 
 const myths = [
   {
