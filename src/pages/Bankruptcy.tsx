@@ -11,7 +11,7 @@ export default function Bankruptcy() {
     <>
     <Helmet>
       <title>Bankruptcy Attorney Baton Rouge | Chapter 7 & 13 | Diment & Associates</title>
-      <meta name="description" content="Louisiana bankruptcy attorneys helping families since 2017. Stop foreclosure, repossession & wage garnishment. Chapter 7 fresh start or Chapter 13 structured plan. Free evaluation — 225-612-4848." />
+      <meta name="description" content="Louisiana bankruptcy attorneys helping families since 2017. Stop foreclosure, repossession & wage garnishment. Chapter 7 fresh start or Chapter 13 structured plan. Free evaluation — 225-612-4404." />
       <link rel="canonical" href="https://dimentfirm.com/bankruptcy" />
       <meta property="og:title" content="Bankruptcy Attorney Baton Rouge | Chapter 7 & 13 | Diment & Associates" />
       <meta property="og:description" content="Stop creditor harassment, foreclosure, repossession, and garnishment. Louisiana bankruptcy attorneys since 2017. Free evaluation." />

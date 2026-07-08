@@ -12,7 +12,7 @@ export default function FamilyLaw() {
         <>
         <Helmet>
           <title>Family Law Attorney Baton Rouge | Divorce & Custody | Diment & Associates</title>
-          <meta name="description" content="Baton Rouge family law attorneys since 2017. Divorce, child custody, child support, and spousal support. Compassionate, judgment-free guidance. Free consultation — 225-612-4848." />
+          <meta name="description" content="Baton Rouge family law attorneys since 2017. Divorce, child custody, child support, and spousal support. Compassionate, judgment-free guidance. Free consultation — 225-612-4404." />
           <link rel="canonical" href="https://dimentfirm.com/family-law" />
           <meta property="og:title" content="Family Law Attorney Baton Rouge | Divorce & Custody | Diment & Associates" />
           <meta property="og:description" content="Divorce, custody, child support. Baton Rouge family law attorneys since 2017. Free consultation." />

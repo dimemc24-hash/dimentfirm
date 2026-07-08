@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Family Law Attorney Baton Rouge | Divorce & Custody',
   description:
-    'Baton Rouge family law attorneys since 2017. Divorce, child custody, child support, and spousal support. Compassionate, judgment-free guidance. Free consultation — 225-612-4848.',
+    'Baton Rouge family law attorneys since 2017. Divorce, child custody, child support, and spousal support. Compassionate, judgment-free guidance. Free consultation — 225-612-4404.',
   alternates: { canonical: 'https://dimentfirm.com/family-law' },
   openGraph: { url: 'https://dimentfirm.com/family-law' },
 };

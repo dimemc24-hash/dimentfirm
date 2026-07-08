@@ -195,7 +195,7 @@ export default function BlogIndex() {
               >
                 Book Free Evaluation
               </a>
-              <a href="tel:2256124848" className="bi-btn-phone">225-612-4848</a>
+              <a href="tel:2256124404" className="bi-btn-phone">225-612-4404</a>
             </div>
           </div>
         </section>

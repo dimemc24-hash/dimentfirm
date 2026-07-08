@@ -82,7 +82,7 @@ export default function StopWageGarnishment() {
       </p>
 
       <div className="bp-callout">
-        <p>If you are currently being garnished or just received notice that a judgment has been entered against you, call us at 225-612-4848. Every pay period you wait is money you don't get back.</p>
+        <p>If you are currently being garnished or just received notice that a judgment has been entered against you, call us at 225-612-4404. Every pay period you wait is money you don't get back.</p>
       </div>
 
       <h2>Frequently Asked Questions</h2>

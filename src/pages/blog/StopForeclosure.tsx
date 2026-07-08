@@ -42,7 +42,7 @@ export default function StopForeclosure() {
       </p>
 
       <div className="bp-callout">
-        <p>If a sheriff's sale date has been set for your property, call us at 225-612-4848 immediately. We have filed cases to stop sales with very little lead time. Every day matters in this situation.</p>
+        <p>If a sheriff's sale date has been set for your property, call us at 225-612-4404 immediately. We have filed cases to stop sales with very little lead time. Every day matters in this situation.</p>
       </div>
 
       <h2>Chapter 13: The Permanent Solution for Homeowners</h2>

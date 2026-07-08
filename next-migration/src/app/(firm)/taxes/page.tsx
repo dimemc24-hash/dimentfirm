@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Tax & Accounting Services Baton Rouge | IRS Resolution',
   description:
-    'Baton Rouge tax preparation, bookkeeping, IRS resolution, and business tax planning since 2017. No detail too small, no deduction left behind. Free consultation — 225-612-4848.',
+    'Baton Rouge tax preparation, bookkeeping, IRS resolution, and business tax planning since 2017. No detail too small, no deduction left behind. Free consultation — 225-612-4404.',
   alternates: { canonical: 'https://dimentfirm.com/taxes' },
   openGraph: { url: 'https://dimentfirm.com/taxes' },
 };

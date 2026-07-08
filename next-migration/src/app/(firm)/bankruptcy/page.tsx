@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Bankruptcy Attorney Baton Rouge | Chapter 7 & 13',
   description:
-    'Louisiana bankruptcy attorneys helping families since 2017. Stop foreclosure, repossession & wage garnishment. Chapter 7 fresh start or Chapter 13 structured plan. Free evaluation — 225-612-4848.',
+    'Louisiana bankruptcy attorneys helping families since 2017. Stop foreclosure, repossession & wage garnishment. Chapter 7 fresh start or Chapter 13 structured plan. Free evaluation — 225-612-4404.',
   alternates: { canonical: 'https://dimentfirm.com/bankruptcy' },
   openGraph: { url: 'https://dimentfirm.com/bankruptcy' },
 };
