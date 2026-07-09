@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import {
   CardElement,
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js'
 import { CreditCard, Shield, CheckCircle, Loader2 } from 'lucide-react'
-import { createSetupIntent, confirmSetupAndSubscribe } from '../../lib/stripe-helpers'
+import { startSubscription } from '../../lib/stripe-helpers'
 import { PLAN } from '../../lib/stripe'
 import { cn } from '../../lib/cn'
 
@@ -19,24 +19,14 @@ export function CheckoutForm({ onComplete, onError, trialDays = 14 }: CheckoutFo
   const stripe = useStripe()
   const elements = useElements()
 
-  const [clientSecret, setClientSecret] = useState<string | null>(null)
   const [processing, setProcessing] = useState(false)
   const [succeeded, setSucceeded] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [cardComplete, setCardComplete] = useState(false)
 
-  // Fetch a SetupIntent on mount
-  useEffect(() => {
-    createSetupIntent().then(result => {
-      if (result?.clientSecret) {
-        setClientSecret(result.clientSecret)
-      }
-    })
-  }, [])
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!stripe || !elements || !clientSecret) return
+    if (!stripe || !elements) return
 
     setProcessing(true)
     setError(null)
@@ -48,9 +38,10 @@ export function CheckoutForm({ onComplete, onError, trialDays = 14 }: CheckoutFo
       return
     }
 
-    // Confirm the SetupIntent with Stripe
-    const { error: stripeError, setupIntent } = await stripe.confirmCardSetup(clientSecret, {
-      payment_method: { card: cardElement },
+    // Turn the card into a PaymentMethod
+    const { error: stripeError, paymentMethod } = await stripe.createPaymentMethod({
+      type: 'card',
+      card: cardElement,
     })
 
     if (stripeError) {
@@ -60,16 +51,14 @@ export function CheckoutForm({ onComplete, onError, trialDays = 14 }: CheckoutFo
       return
     }
 
-    if (setupIntent?.status === 'succeeded') {
-      // Tell our server to create the subscription with this payment method
-      const result = await confirmSetupAndSubscribe(setupIntent.id)
-      if (result) {
-        setSucceeded(true)
-        onComplete?.()
-      } else {
-        setError("Card saved, but we couldn't start your subscription. Please contact support.")
-        setProcessing(false)
-      }
+    // Tell our server to create the customer + trial subscription with this payment method
+    const result = await startSubscription({ paymentMethodId: paymentMethod.id, trialDays })
+    if (result) {
+      setSucceeded(true)
+      onComplete?.()
+    } else {
+      setError("Card saved, but we couldn't start your subscription. Please contact support.")
+      setProcessing(false)
     }
   }
 
@@ -146,7 +135,7 @@ export function CheckoutForm({ onComplete, onError, trialDays = 14 }: CheckoutFo
       {/* Submit */}
       <button
         type="submit"
-        disabled={!stripe || !cardComplete || processing || !clientSecret}
+        disabled={!stripe || !cardComplete || processing}
         className={cn(
           'w-full py-3 rounded-xl font-semibold text-sm transition-all flex items-center justify-center gap-2',
           cardComplete && !processing

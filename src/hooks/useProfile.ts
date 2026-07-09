@@ -22,7 +22,9 @@ export function useProfile(userId: string | undefined) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (!userId) { setLoading(false); return }
+    if (!userId) { setProfile(null); setLoading(false); return }
+
+    setLoading(true)
 
     // Demo user — return mock profile immediately
     if (userId === 'demo-user-0001') {

@@ -1,8 +1,7 @@
 # Fresh Start Academy — Supabase CLI Configuration
 # Docs: https://supabase.com/docs/guides/cli/config
 
-[project]
-id = "" # Fill with your Supabase project ref (e.g., "abcdefghijklmnop")
+project_id = "blbbtxrzsruskekjmcwv"
 
 [api]
 enabled = true

@@ -1,5 +1,7 @@
-import { Outlet, NavLink } from 'react-router-dom'
+import { Outlet, NavLink, Navigate } from 'react-router-dom'
 import { Users, Link as LinkIcon, BarChart3 } from 'lucide-react'
+import { useAuth } from '../../../hooks/useAuth'
+import { useProfile } from '../../../hooks/useProfile'
 import { cn } from '../../../lib/cn'
 
 const NAV_ITEMS = [
@@ -9,6 +11,15 @@ const NAV_ITEMS = [
 ]
 
 export default function AdminLayout() {
+  const { user, loading: authLoading } = useAuth()
+  const { profile, loading: profileLoading } = useProfile(user?.id)
+
+  if (authLoading || profileLoading) return null
+  // Guard against the one-render gap where `profile` hasn't caught up to a
+  // just-resolved `user` yet — only trust it once it matches the current user.
+  if (!user || !profile || profile.id !== user.id) return null
+  if (profile.role !== 'admin') return <Navigate to="/academy/dashboard" replace />
+
   return (
     <div>
       <div className="flex items-center justify-between mb-6">

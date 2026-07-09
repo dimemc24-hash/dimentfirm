@@ -1,121 +1,56 @@
 import { supabase } from './supabase'
 
 /**
- * Create a Stripe Setup Intent for collecting card details during trial signup.
- * Calls a Supabase Edge Function that creates the SetupIntent server-side.
+ * Start a subscription: creates a Stripe Customer + Subscription (with trial)
+ * from a PaymentMethod already created client-side via stripe.createPaymentMethod().
+ * Calls the create-checkout Edge Function.
  */
-export async function createSetupIntent(): Promise<{ clientSecret: string } | null> {
-  try {
-    const { data, error } = await supabase.functions.invoke('stripe-create-setup-intent')
-    if (error) throw error
-    return data as { clientSecret: string }
-  } catch (err) {
-    console.error('Failed to create setup intent:', err)
-    return null
-  }
-}
-
-/**
- * Create a Stripe Checkout Session for starting or resuming a subscription.
- * Redirects to Stripe-hosted checkout page.
- */
-export async function createCheckoutSession(params: {
-  priceId?: string
+export async function startSubscription(params: {
+  paymentMethodId: string
   trialDays?: number
-  inviteCode?: string
-}): Promise<{ url: string } | null> {
+}): Promise<{
+  success: boolean
+  subscriptionId: string
+  customerId: string
+  status: string
+  trialEndsAt: string
+} | null> {
   try {
-    const { data, error } = await supabase.functions.invoke('stripe-create-checkout', {
+    const { data, error } = await supabase.functions.invoke('create-checkout', {
       body: {
-        price_id: params.priceId,
-        trial_days: params.trialDays ?? 14,
-        invite_code: params.inviteCode,
-        success_url: `${window.location.origin}/dashboard?checkout=success`,
-        cancel_url: `${window.location.origin}/register?checkout=canceled`,
+        paymentMethodId: params.paymentMethodId,
+        trialDays: params.trialDays,
       },
     })
     if (error) throw error
-    return data as { url: string }
+    return data as {
+      success: boolean
+      subscriptionId: string
+      customerId: string
+      status: string
+      trialEndsAt: string
+    }
   } catch (err) {
-    console.error('Failed to create checkout session:', err)
+    console.error('Failed to start subscription:', err)
     return null
   }
 }
 
 /**
  * Get the Stripe Customer Portal URL for managing subscription.
+ * Calls the create-portal-session Edge Function.
  */
 export async function getCustomerPortalUrl(): Promise<string | null> {
   try {
-    const { data, error } = await supabase.functions.invoke('stripe-customer-portal', {
+    const { data, error } = await supabase.functions.invoke('create-portal-session', {
       body: {
-        return_url: `${window.location.origin}/billing`,
+        returnUrl: `${window.location.origin}/academy/billing`,
       },
     })
     if (error) throw error
     return (data as { url: string }).url
   } catch (err) {
     console.error('Failed to get customer portal URL:', err)
-    return null
-  }
-}
-
-/**
- * Get detailed subscription status from the server.
- * Useful for checking real-time status when the local cache might be stale.
- */
-export async function getSubscriptionStatus(): Promise<{
-  status: string
-  trial_ends_at: string | null
-  current_period_end: string | null
-  cancel_at: string | null
-} | null> {
-  try {
-    const { data, error } = await supabase.functions.invoke('stripe-subscription-status')
-    if (error) throw error
-    return data as {
-      status: string
-      trial_ends_at: string | null
-      current_period_end: string | null
-      cancel_at: string | null
-    }
-  } catch (err) {
-    console.error('Failed to get subscription status:', err)
-    return null
-  }
-}
-
-/**
- * Handle trial expiry — call this when trial has 0 days left.
- * Redirects to checkout or shows upgrade prompt.
- */
-export async function handleTrialExpiry(): Promise<{ action: 'checkout' | 'grace' | 'suspend'; url?: string }> {
-  try {
-    const { data, error } = await supabase.functions.invoke('stripe-handle-trial-expiry')
-    if (error) throw error
-    return data as { action: 'checkout' | 'grace' | 'suspend'; url?: string }
-  } catch (err) {
-    console.error('Failed to handle trial expiry:', err)
-    return { action: 'suspend' }
-  }
-}
-
-/**
- * Confirm a SetupIntent after card collection.
- * The server attaches the payment method and creates the subscription.
- */
-export async function confirmSetupAndSubscribe(setupIntentId: string): Promise<{
-  subscriptionId: string
-  status: string
-} | null> {
-  try {
-    const { data, error } = await supabase.functions.invoke('stripe-confirm-setup', {
-      body: { setup_intent_id: setupIntentId },
-    })
-    if (error) throw error
-    return data as { subscriptionId: string; status: string }
-  } catch (err) {
-    console.error('Failed to confirm setup:', err)
     return null
   }
 }

@@ -15,9 +15,47 @@ const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY')!, {
 const webhookSecret = Deno.env.get('STRIPE_WEBHOOK_SECRET')!
 const supabaseUrl = Deno.env.get('SUPABASE_URL')!
 const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
+const resendApiKey = Deno.env.get('RESEND_API_KEY')
+const resendFromEmail = Deno.env.get('RESEND_FROM_EMAIL') || 'noreply@dimentfirm.com'
 
 // Grace period after payment failure (7 days)
 const GRACE_PERIOD_MS = 7 * 24 * 60 * 60 * 1000
+
+async function sendEmail(to: string, subject: string, html: string) {
+  if (!resendApiKey) {
+    console.log(`Resend not configured — skipping email "${subject}" to ${to}`)
+    return
+  }
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${resendApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: `Fresh Start Academy <${resendFromEmail}>`,
+        to: [to],
+        subject,
+        html,
+      }),
+    })
+    if (!res.ok) {
+      console.error('Resend error:', await res.text())
+    }
+  } catch (err) {
+    console.error('Failed to send email:', err)
+  }
+}
+
+async function getUserEmail(
+  supabase: ReturnType<typeof createClient>,
+  userId: string | undefined,
+): Promise<string | null> {
+  if (!userId) return null
+  const { data } = await supabase.from('profiles').select('email').eq('id', userId).maybeSingle()
+  return (data as { email: string } | null)?.email ?? null
+}
 
 serve(async (req: Request) => {
   // Only POST allowed
@@ -80,7 +118,18 @@ serve(async (req: Request) => {
           `Trial ending soon for customer ${subscription.customer}`,
           `(subscription: ${subscription.id})`
         )
-        // In production: send email notification via Supabase Auth / Resend / etc.
+        const email = await getUserEmail(supabase, subscription.metadata?.supabase_user_id)
+        if (email) {
+          await sendEmail(
+            email,
+            'Your Fresh Start Academy trial ends soon',
+            `<h2>Your free trial is ending soon</h2>
+             <p>Your Fresh Start Academy trial ends in the next few days. After that, your card on file will be
+             charged automatically to continue your subscription.</p>
+             <p>No action needed if you'd like to continue. To cancel or update your payment method, visit your
+             billing settings.</p>`,
+          )
+        }
         break
       }
 
@@ -240,5 +289,20 @@ async function handlePaymentFailed(
   }
 
   console.log(`Payment failed for subscription ${subId}, grace until ${graceEndsAt}`)
-  // In production: send "payment failed" email notification
+
+  const { data: sub } = await supabase
+    .from('subscriptions')
+    .select('user_id')
+    .eq('stripe_sub_id', subId)
+    .maybeSingle()
+  const email = await getUserEmail(supabase, (sub as { user_id: string } | null)?.user_id)
+  if (email) {
+    await sendEmail(
+      email,
+      'Action needed: your Fresh Start Academy payment failed',
+      `<h2>We couldn't process your payment</h2>
+       <p>Your most recent payment for Fresh Start Academy didn't go through. You still have access for now —
+       please update your payment method within the next 7 days to avoid losing access.</p>`,
+    )
+  }
 }

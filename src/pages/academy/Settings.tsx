@@ -1,7 +1,8 @@
 import { useState, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   Bell, Moon, Sun, Smartphone, Volume2, VolumeX,
-  Shield, HelpCircle, LogOut, ChevronRight,
+  Shield, HelpCircle, LogOut, ChevronRight, CreditCard,
   Palette, Eye, Type, Vibrate,
 } from 'lucide-react'
 import { useAuth } from '../../hooks/useAuth'
@@ -23,6 +24,7 @@ interface ToggleSetting {
 // ── Settings Page ────────────────────────────────────────────────────
 
 export default function Settings() {
+  const navigate = useNavigate()
   const { user, signOut } = useAuth()
   const { profile } = useProfile(user?.id)
   const { settings, toggle } = useSettings()
@@ -175,7 +177,13 @@ export default function Settings() {
         <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3 px-1">
           Account
         </h2>
-        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm divide-y divide-gray-100 overflow-hidden">
+          <LinkRow
+            icon={<CreditCard className="w-5 h-5 text-gray-400" />}
+            label="Billing & Subscription"
+            description="Free during beta — manage payment method"
+            onClick={() => navigate('/academy/billing')}
+          />
           <button
             onClick={handleLogout}
             disabled={logoutLoading}

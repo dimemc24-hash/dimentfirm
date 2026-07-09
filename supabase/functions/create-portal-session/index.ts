@@ -14,7 +14,7 @@ const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY')!, {
 
 const supabaseUrl = Deno.env.get('SUPABASE_URL')!
 const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
-const appUrl = Deno.env.get('APP_URL') || 'https://app.freshstartacademy.com'
+const appUrl = Deno.env.get('APP_URL') || 'https://dimentfirm.com'
 
 serve(async (req: Request) => {
   const corsResponse = handleCors(req)
@@ -56,7 +56,7 @@ serve(async (req: Request) => {
     }
 
     // Parse optional return URL from body
-    let returnUrl = `${appUrl}/billing`
+    let returnUrl = `${appUrl}/academy/billing`
     try {
       const body = await req.json()
       if (body?.returnUrl) {
