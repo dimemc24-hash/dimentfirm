@@ -1,5 +1,35 @@
 const NC_CAPTURE_URL = 'https://newchapter-production.up.railway.app/api/leads/website-capture'
 
+declare global {
+  interface Window {
+    oaiq?: (...args: unknown[]) => void
+  }
+}
+
+function fireOaiqConversion(eventName: string) {
+  if (typeof window === 'undefined' || !window.oaiq) return
+  window.oaiq('measure', eventName, {
+    type: 'customer_action',
+    amount: 0,
+    currency: 'USD',
+  })
+}
+
+// Delegated listener catches every tel: and booking-CTA link site-wide —
+// there's no shared PhoneLink/BookingLink component to hook individually.
+export function initConversionTracking() {
+  document.addEventListener('click', (e) => {
+    const link = (e.target as HTMLElement)?.closest('a')
+    if (!link) return
+    const href = link.getAttribute('href') || ''
+    if (href.startsWith('tel:')) {
+      fireOaiqConversion('phone_call_click')
+    } else if (href.includes('outlook.office.com/book/')) {
+      fireOaiqConversion('consultation_booking_click')
+    }
+  })
+}
+
 type SessionPage = { path: string; practiceArea: string; ts: number }
 
 function getSessionPages(): SessionPage[] {

@@ -220,28 +220,6 @@
   color: var(--color-hare-brown);
 }
 
-/* Floating widget (DeskPetWidget — global, not scoped) */
-.floating-widget {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 50;
-  background: var(--color-text-main);
-  color: white;
-  border: none;
-  border-radius: var(--border-radius-full);
-  padding: 0.5rem;
-  padding-right: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  cursor: pointer;
-  font-family: var(--font-heading);
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
 /* ═══════════════════════════════════════════════════════════════════════
    ACADEMY — Dark Mode Semantic Tokens
    ═══════════════════════════════════════════════════════════════════════ */

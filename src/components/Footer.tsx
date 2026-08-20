@@ -40,21 +40,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="footer-col">
-          <h4>Join the Community</h4>
-          <p style={{ fontSize: '0.9rem', marginBottom: '1rem' }}>
-            We've guided over 1200 clients. Get your free desk pet and start your journey!
-          </p>
-          <button
-            onClick={() => {
-              window.dispatchEvent(new Event('open-desk-pet'));
-            }}
-            className="btn btn-outline"
-            style={{ fontSize: '0.9rem', width: '100%' }}
-          >
-            Request Desk Pet
-          </button>
-        </div>
       </div>
 
       <div className="container" style={{ marginTop: '3rem', paddingTop: '1.5rem', borderTop: '1px solid var(--color-border)', textAlign: 'center', fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>
@@ -70,7 +55,7 @@ export default function Footer() {
         }
         .footer-container {
           display: grid;
-          grid-template-columns: 2fr 1fr 1fr 1fr;
+          grid-template-columns: 2fr 1fr 1fr;
           gap: 3rem;
         }
         .footer-col h4 {

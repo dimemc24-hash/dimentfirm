@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import './index.css'
 import App from './App'
 import { registerSW } from './lib/sw-register'
+import { initConversionTracking } from './lib/track'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -12,6 +13,8 @@ createRoot(document.getElementById('root')!).render(
     </HelmetProvider>
   </StrictMode>,
 )
+
+initConversionTracking()
 
 // Register service worker for offline support
 registerSW({
