@@ -1,22 +1,23 @@
 import { useState } from 'react';
-import { ArrowRight, RefreshCcw, TrendingUp, Car, Home as HomeIcon } from 'lucide-react';
+import { ArrowRight, RefreshCcw, TrendingUp, Car, Home as HomeIcon, CreditCard } from 'lucide-react';
 import {
   computeTrajectory,
+  computeDebtPayoff,
   type HistoryBucket,
   type SavingsBucket,
   type TrajectoryResult,
   type AxisResult,
 } from '../lib/trajectory';
 
-type Step = 'behind' | 'income' | 'history' | 'savings' | 'result';
+type Step = 'behind' | 'debt' | 'income' | 'history' | 'savings' | 'result';
 
-const STEP_ORDER: Step[] = ['behind', 'income', 'history', 'savings', 'result'];
+const STEP_ORDER: Step[] = ['behind', 'debt', 'income', 'history', 'savings', 'result'];
 
 const SAVINGS_OPTIONS: { value: SavingsBucket; label: string }[] = [
   { value: 'low', label: "Not much extra, realistically" },
   { value: 'mid', label: '$2,000 – $9,999' },
   { value: 'high', label: '$10,000 – $19,999' },
-  { value: 'max', label: '$20,000 or more — a full down payment' },
+  { value: 'max', label: '$20,000 or more' },
 ];
 
 const HISTORY_OPTIONS: { value: HistoryBucket; label: string }[] = [
@@ -30,9 +31,12 @@ export default function TrajectoryComparator() {
   const [step, setStep] = useState<Step>('behind');
   const [behindOnCar, setBehindOnCar] = useState(false);
   const [behindOnHouse, setBehindOnHouse] = useState(false);
+  const [ccBalance, setCcBalance] = useState('');
+  const [ccPayment, setCcPayment] = useState('');
   const [income, setIncome] = useState('');
   const [history, setHistory] = useState<HistoryBucket | null>(null);
   const [result, setResult] = useState<TrajectoryResult | null>(null);
+  const [debtResult, setDebtResult] = useState<AxisResult | null>(null);
 
   const stepIndex = STEP_ORDER.indexOf(step);
 
@@ -47,6 +51,7 @@ export default function TrajectoryComparator() {
       savings: finalSavings,
     });
     setResult(computed);
+    setDebtResult(computeDebtPayoff({ balance: Number(ccBalance) || 0, monthlyPayment: Number(ccPayment) || 0 }));
     setStep('result');
   };
 
@@ -54,9 +59,12 @@ export default function TrajectoryComparator() {
     setStep('behind');
     setBehindOnCar(false);
     setBehindOnHouse(false);
+    setCcBalance('');
+    setCcPayment('');
     setIncome('');
     setHistory(null);
     setResult(null);
+    setDebtResult(null);
   };
 
   return (
@@ -84,8 +92,54 @@ export default function TrajectoryComparator() {
               <span>Behind on a mortgage or rent-to-own home payment</span>
             </label>
           </div>
+          <button className="btn btn-turtle traj-next" onClick={() => goNext('debt')}>
+            Continue <ArrowRight size={18} />
+          </button>
+        </div>
+      )}
+
+      {step === 'debt' && (
+        <div className="traj-step animate-fade-in">
+          <h2 className="traj-question">What's your largest credit card balance, and about how much do you pay toward it each month?</h2>
+          <p className="traj-sub">This is just to show you your own numbers clearly — nothing is saved or sent anywhere.</p>
+          <div className="traj-field-group">
+            <label className="traj-field-label">Balance</label>
+            <div className="traj-income-input">
+              <span className="traj-dollar">$</span>
+              <input
+                type="number"
+                inputMode="numeric"
+                min={0}
+                placeholder="0"
+                value={ccBalance}
+                onChange={e => setCcBalance(e.target.value)}
+                autoFocus
+              />
+            </div>
+          </div>
+          <div className="traj-field-group">
+            <label className="traj-field-label">Monthly payment</label>
+            <div className="traj-income-input">
+              <span className="traj-dollar">$</span>
+              <input
+                type="number"
+                inputMode="numeric"
+                min={0}
+                placeholder="0"
+                value={ccPayment}
+                onChange={e => setCcPayment(e.target.value)}
+              />
+              <span className="traj-per-month">/ month</span>
+            </div>
+          </div>
           <button className="btn btn-turtle traj-next" onClick={() => goNext('income')}>
             Continue <ArrowRight size={18} />
+          </button>
+          <button
+            className="traj-skip"
+            onClick={() => { setCcBalance(''); setCcPayment(''); goNext('income'); }}
+          >
+            I don't carry significant credit card debt
           </button>
         </div>
       )}
@@ -134,7 +188,6 @@ export default function TrajectoryComparator() {
       {step === 'savings' && (
         <div className="traj-step animate-fade-in">
           <h2 className="traj-question">If nothing changes, how much could you realistically save over the next 2 years?</h2>
-          <p className="traj-sub">$20,000 represents a typical 10% down payment in this area.</p>
           <div className="traj-options">
             {SAVINGS_OPTIONS.map(opt => (
               <button
@@ -160,6 +213,9 @@ export default function TrajectoryComparator() {
             </p>
           </div>
 
+          {debtResult && (
+            <AxisCard icon={<CreditCard size={22} />} title="Your Credit Card Debt" axis={debtResult} />
+          )}
           <AxisCard icon={<Car size={22} />} title="Financing a Car" axis={result.car} />
           <AxisCard icon={<HomeIcon size={22} />} title="Buying a Home" axis={result.home} />
 
@@ -239,8 +295,18 @@ export default function TrajectoryComparator() {
         .traj-check input {
           width: 20px;
           height: 20px;
-          accent-color: var(--color-turtle-green);
+          accent-color: var(--color-freedom-gold);
           flex-shrink: 0;
+        }
+        .traj-field-group {
+          margin-bottom: 1.25rem;
+        }
+        .traj-field-label {
+          display: block;
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: var(--color-text-muted);
+          margin-bottom: 0.5rem;
         }
         .traj-income-input {
           display: flex;
@@ -251,6 +317,21 @@ export default function TrajectoryComparator() {
           border: 2px solid var(--color-border);
           border-radius: var(--border-radius-lg);
           margin-bottom: 2rem;
+        }
+        .traj-field-group .traj-income-input {
+          margin-bottom: 0;
+        }
+        .traj-skip {
+          display: block;
+          width: 100%;
+          text-align: center;
+          background: none;
+          border: none;
+          color: var(--color-text-muted);
+          font-size: 0.9rem;
+          margin-top: 1rem;
+          cursor: pointer;
+          text-decoration: underline;
         }
         .traj-dollar {
           font-size: 1.5rem;
@@ -299,7 +380,7 @@ export default function TrajectoryComparator() {
         .traj-option-btn:hover .option-icon { transform: translateX(4px); color: var(--color-text-main); }
 
         .traj-result-header { text-align: center; margin-bottom: 2rem; }
-        .traj-result-icon { color: var(--color-turtle-green); margin-bottom: 0.5rem; }
+        .traj-result-icon { color: var(--color-freedom-gold); margin-bottom: 0.5rem; }
         .traj-honest-note {
           background: var(--color-background);
           border-radius: var(--border-radius);
@@ -360,7 +441,7 @@ function AxisCard({ icon, title, axis }: { icon: React.ReactNode; title: string;
           gap: 0.75rem;
           padding: 1rem 1.5rem;
           background: var(--color-background);
-          color: var(--color-turtle-shell);
+          color: var(--color-freedom-stone);
         }
         .axis-card-title h3 { margin: 0; font-size: 1.1rem; }
         .axis-columns {
@@ -384,7 +465,7 @@ function AxisCard({ icon, title, axis }: { icon: React.ReactNode; title: string;
         .axis-col strong { font-size: 1.15rem; }
         .axis-col p { font-size: 0.9rem; color: var(--color-text-muted); margin: 0; }
         .axis-col-winner {
-          background: var(--color-turtle-green-light);
+          background: var(--color-freedom-gold-light);
         }
         @media (max-width: 576px) {
           .axis-columns { grid-template-columns: 1fr; }

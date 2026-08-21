@@ -29,16 +29,16 @@ export default function Bankruptcy() {
         />
         <div className="bk-freedom-hero__scrim" />
         <div className="container bk-freedom-hero__content">
-          <p className="bk-freedom-hero__eyebrow">There is a door out of this.</p>
+          <p className="bk-freedom-hero__eyebrow">The next chapter is yours to write.</p>
           <h1 className="bk-freedom-hero__headline">
             The other side of debt is closer than you think.
           </h1>
           <p className="bk-freedom-hero__sub">
-            Bankruptcy isn't the end of the road — it's usually the fastest one. What's chained to you now
-            can be locked in a box behind you, while you walk into a future with nothing holding you back.
+            Bankruptcy isn't where your story ends — for most people, it's the fastest way to the next one.
+            You could be back on solid ground sooner than you think.
           </p>
           <div className="bk-freedom-hero__cta-row">
-            <a href="#trajectory" className="btn btn-white-cta">See what your future can look like</a>
+            <a href="#trajectory" className="btn btn-white-cta">Compare Your Two Paths</a>
           </div>
         </div>
       </section>
@@ -93,13 +93,12 @@ export default function Bankruptcy() {
         <div className="container" style={{ maxWidth: '1000px' }}>
           <h2 className="text-center" style={{ marginBottom: '0.75rem' }}>What's actually on the other side</h2>
           <p className="text-center" style={{ color: 'var(--color-text-muted)', fontSize: '1.125rem', marginBottom: '3rem', maxWidth: '700px', marginLeft: 'auto', marginRight: 'auto' }}>
-            Not scare tactics — just the real math on where you are now, and how much sooner the other side
-            can arrive than most people expect.
+            Real numbers, not scare tactics — here's how much sooner the other side can arrive than you'd expect.
           </p>
           <div className="bk-stats-grid">
             <div className="bk-stat-card shadow-hover">
               <div className="bk-stat-icon"><CreditCard size={28} /></div>
-              <h3>Years of minimum payments → a fixed finish line</h3>
+              <h3>From decades of payments to a fixed finish line</h3>
               <p>
                 The average carried credit card balance sits around $10,479 at today's average rate of roughly 22%.
                 On minimum payments alone, that can take 15-20+ years to clear. A Chapter 13 plan resolves the same
@@ -117,7 +116,7 @@ export default function Bankruptcy() {
             </div>
             <div className="bk-stat-card shadow-hover">
               <div className="bk-stat-icon"><Car size={28} /></div>
-              <h3>Back in the driver's seat in months</h3>
+              <h3>Financeable again within months</h3>
               <p>
                 Most clients are financeable for a car again within about 6 months of filing, with terms improving
                 steadily from there as on-time payments rebuild credit.
@@ -334,8 +333,8 @@ export default function Bankruptcy() {
           width: 56px;
           height: 56px;
           border-radius: 50%;
-          background: var(--color-turtle-green-light);
-          color: var(--color-turtle-shell);
+          background: var(--color-freedom-gold-light);
+          color: var(--color-freedom-gold);
           display: flex;
           align-items: center;
           justify-content: center;

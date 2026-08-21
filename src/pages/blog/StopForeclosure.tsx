@@ -12,19 +12,19 @@ export default function StopForeclosure() {
     >
       <h2>How Louisiana Foreclosure Works</h2>
       <p>
-        Louisiana is a <strong>judicial foreclosure state</strong>. Unlike some states where a lender can foreclose through an administrative process, Louisiana foreclosures go through the court system. This actually gives homeowners more time and more opportunities to respond — but the process still moves, and ignoring it accelerates it.
+        Louisiana is technically a <strong>judicial foreclosure state</strong>, but in practice, most mortgage foreclosures here move through a fast track called <strong>executory process</strong>. Because nearly every mortgage note contains a "confession of judgment" clause, the lender doesn't need a trial to get a court order — they file a petition, a judge signs an order, and the sheriff is authorized to seize and sell the property. There is no extended hearing process and very little opportunity to contest it in court. This is faster than most homeowners expect, not slower.
       </p>
-      <p>The Louisiana judicial foreclosure process generally follows this path:</p>
+      <p>The Louisiana executory process generally follows this path:</p>
       <ol>
-        <li>You fall behind on mortgage payments (typically 3–6 months before formal action begins)</li>
+        <li>You fall behind on mortgage payments</li>
         <li>The lender sends a Notice of Default and demand letter</li>
-        <li>The lender files a Petition for Executory Process or Ordinary Process in state court</li>
-        <li>The court issues a writ of seizure and sale</li>
+        <li>The lender files a Petition for Executory Process in state court, backed by the confession-of-judgment clause in your mortgage</li>
+        <li>The court issues a writ of seizure and sale — typically without a hearing</li>
         <li>The property is advertised and scheduled for sheriff's sale</li>
         <li>The sheriff's sale occurs — the property is sold at auction</li>
       </ol>
       <p>
-        From first missed payment to sheriff's sale can take anywhere from a few months to over a year, depending on lender timing and court scheduling. But once the process begins, time moves faster than most homeowners expect.
+        <strong>From the first missed payment to the sheriff's sale is usually under six months.</strong> A slower alternative — ordinary process, which does involve a full lawsuit and can take much longer — exists but is uncommon for residential mortgages. Don't count on it. If you're behind, the safest assumption is that the clock is already fast and short, and the time to act is now, not after a sale date is set.
       </p>
 
       <h2>The Automatic Stay: Stops Foreclosure Immediately</h2>
@@ -113,7 +113,7 @@ export default function StopForeclosure() {
         </div>
         <div className="bp-faq-item">
           <p className="bp-faq-q">What if the sheriff's sale already happened?</p>
-          <p className="bp-faq-a">Once the sale has occurred and the redemption period has passed, it is very difficult to undo. Louisiana provides a brief post-sale redemption period in some circumstances, but the window is narrow. If a sale is imminent rather than past, act now. If a sale has already occurred, contact an attorney to understand your remaining options.</p>
+          <p className="bp-faq-a">Once the sheriff's sale has actually occurred, the property is generally gone — Louisiana does not provide a meaningful redemption period for a mortgage sheriff's sale the way some states do (that's a different rule for delinquent property tax sales, not this). This is exactly why timing matters so much: the automatic stay can stop a scheduled sale, but it cannot undo one that already happened. If a sale date is set, call us before that date. If a sale has already occurred, contact an attorney immediately to understand what limited options, if any, remain in your specific case.</p>
         </div>
         <div className="bp-faq-item">
           <p className="bp-faq-q">Do I have to be current on my mortgage before filing Chapter 13?</p>

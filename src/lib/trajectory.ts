@@ -115,3 +115,70 @@ export function computeTrajectory(inputs: TrajectoryInputs): TrajectoryResult {
     bothCurrentPathHealthy: car.verdict === 'already-qualifies' && home.verdict === 'comparable',
   }
 }
+
+// ── Credit card payoff clarity ──
+// Fixed-payment amortization at a flat monthly rate, using the researched average
+// credit card APR (~22.15%, Fed G.19) as the assumption, since most people don't know
+// their exact rate. If the monthly payment doesn't cover the interest accruing each
+// month, the balance never shrinks — a real and common situation worth naming plainly.
+// If the payoff is already fast (roughly in line with a typical Chapter 13 plan length),
+// we say so honestly rather than claim bankruptcy clearly speeds it up.
+
+const DEBT_ASSUMED_APR_PERCENT = 22
+const DEBT_COMPARABLE_YEARS_BAR = 3
+
+export interface DebtInputs {
+  balance: number
+  monthlyPayment: number
+}
+
+function formatYears(years: number): string {
+  if (years < 1) {
+    const months = Math.max(1, Math.round(years * 12))
+    return `About ${months} month${months === 1 ? '' : 's'}`
+  }
+  const rounded = Math.round(years * 10) / 10
+  return `About ${rounded} year${rounded === 1 ? '' : 's'}`
+}
+
+export function computeDebtPayoff({ balance, monthlyPayment }: DebtInputs): AxisResult | null {
+  if (!balance || balance <= 0 || !monthlyPayment || monthlyPayment <= 0) return null
+
+  const monthlyRate = DEBT_ASSUMED_APR_PERCENT / 100 / 12
+  const monthlyInterest = balance * monthlyRate
+  const roundedBalance = Math.round(balance).toLocaleString()
+  const roundedPayment = Math.round(monthlyPayment).toLocaleString()
+
+  if (monthlyPayment <= monthlyInterest) {
+    return {
+      verdict: 'bankruptcy-faster',
+      currentPathLabel: "Won't shrink at this rate",
+      currentPathDetail: `At $${roundedPayment}/month on a $${roundedBalance} balance and today's average card rate (~${DEBT_ASSUMED_APR_PERCENT}%), the payment doesn't fully cover the interest building up each month — the balance grows instead of shrinking.`,
+      bkPathLabel: 'Resolved in 3-5 years, or discharged now',
+      bkPathDetail: 'A Chapter 13 plan folds this into one structured payment. Chapter 7 can discharge it outright.',
+    }
+  }
+
+  const months = -Math.log(1 - (balance * monthlyRate) / monthlyPayment) / Math.log(1 + monthlyRate)
+  const years = months / 12
+  const totalInterest = monthlyPayment * months - balance
+  const roundedInterest = Math.round(totalInterest).toLocaleString()
+
+  if (years <= DEBT_COMPARABLE_YEARS_BAR) {
+    return {
+      verdict: 'comparable',
+      currentPathLabel: formatYears(years),
+      currentPathDetail: `At $${roundedPayment}/month, you're already on pace to clear this balance in a similar timeframe to a Chapter 13 plan — bankruptcy wouldn't clearly speed up this specific debt.`,
+      bkPathLabel: '3-5 years, or discharged now',
+      bkPathDetail: 'For comparison, this is the typical range for clients who do file.',
+    }
+  }
+
+  return {
+    verdict: 'bankruptcy-faster',
+    currentPathLabel: formatYears(years),
+    currentPathDetail: `At $${roundedPayment}/month on a $${roundedBalance} balance and today's average card rate (~${DEBT_ASSUMED_APR_PERCENT}%), you'd pay roughly $${roundedInterest} in interest before it's gone — assuming nothing new gets added and the rate never changes.`,
+    bkPathLabel: 'Resolved in 3-5 years, or discharged now',
+    bkPathDetail: 'A Chapter 13 plan folds this into one structured payment. Chapter 7 can discharge it outright, right now.',
+  }
+}
