@@ -300,7 +300,7 @@ export default function Bankruptcy() {
           opacity: 0.9;
           margin-bottom: 1rem;
         }
-        .bk-freedom-hero__headline {
+        .bk-freedom-hero__content .bk-freedom-hero__headline {
           font-size: 3rem;
           line-height: 1.15;
           margin-bottom: 1.5rem;

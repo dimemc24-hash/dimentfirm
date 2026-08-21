@@ -1,7 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { trackConsultationClick } from '../lib/track';
+
+const PHONE = '225-612-4404';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,6 +34,10 @@ export default function Navigation() {
           <Link to="/taxes" className="nav-link">Taxes</Link>
           <Link to="/blog" className="nav-link">Resources</Link>
           <Link to="/academy" className="nav-link">Academy</Link>
+          <a href={`tel:${PHONE.replace(/-/g, '')}`} className="nav-phone">
+            <Phone size={16} />
+            {PHONE}
+          </a>
           <a
             href="https://newchapter-production.up.railway.app/"
             className="btn btn-nav-login"
@@ -71,6 +77,14 @@ export default function Navigation() {
           <Link to="/taxes" onClick={() => setIsOpen(false)}>Taxes & Accounting</Link>
           <Link to="/blog" onClick={() => setIsOpen(false)}>Resources &amp; Guides</Link>
           <Link to="/academy" onClick={() => setIsOpen(false)}>Fresh Start Academy</Link>
+          <a
+            href={`tel:${PHONE.replace(/-/g, '')}`}
+            style={{ fontWeight: 600 }}
+            onClick={() => setIsOpen(false)}
+          >
+            <Phone size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.5rem' }} />
+            {PHONE}
+          </a>
           <a
             href="https://newchapter-production.up.railway.app/"
             style={{ fontWeight: 600 }}
@@ -215,6 +229,19 @@ export default function Navigation() {
           }
         }
         
+        .nav-phone {
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          color: #fff;
+          font-family: var(--font-heading);
+          font-weight: 600;
+          font-size: 0.9rem;
+          white-space: nowrap;
+        }
+        .nav-phone:hover {
+          color: rgba(255, 255, 255, 0.8);
+        }
         .btn-nav-login {
           background-color: transparent;
           color: rgba(255, 255, 255, 0.9);
