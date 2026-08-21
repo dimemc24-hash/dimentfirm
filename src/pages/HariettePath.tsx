@@ -18,9 +18,38 @@ export default function HariettePath() {
             {/* Hero */}
             <section className="path-hero theme-hare">
                 <div className="container text-center">
-                    <span className="path-emoji">🐰</span>
+                    <img
+                        src="/mascots/hariette/hariette-post.png"
+                        alt="Hariette the Hare, striding forward with purpose and confidence"
+                        className="path-hero-img"
+                    />
                     <h1>Hariette's Quick Jump to Freedom</h1>
                     <p className="path-lead">Debt free. Fast!</p>
+                </div>
+            </section>
+
+            {/* Before / After */}
+            <section className="section bg-white">
+                <div className="container" style={{ maxWidth: '900px' }}>
+                    <div className="path-transform">
+                        <div className="path-transform-panel">
+                            <img
+                                src="/mascots/hariette/hariette-pre.png"
+                                alt="Hariette running in a panic, terrified and looking back over her shoulder"
+                            />
+                            <span className="path-transform-label">Right now, maybe</span>
+                            <p>Running scared. Looking over your shoulder, waiting for the next call.</p>
+                        </div>
+                        <div className="path-transform-arrow">→</div>
+                        <div className="path-transform-panel">
+                            <img
+                                src="/mascots/hariette/hariette-post.png"
+                                alt="Hariette striding forward with purpose, confident and determined"
+                            />
+                            <span className="path-transform-label">90-120 days later</span>
+                            <p>Moving with purpose. Nothing chasing you anymore.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -163,16 +192,59 @@ export default function HariettePath() {
           padding: 6rem 2rem;
           margin-bottom: 2rem;
         }
-        .path-emoji {
-          font-size: 5rem;
+        .path-hero-img {
+          width: 180px;
+          height: 180px;
+          object-fit: contain;
           display: block;
-          margin-bottom: 1rem;
+          margin: 0 auto 1rem;
         }
         .path-lead {
           font-size: 1.5rem;
           font-family: var(--font-heading);
           opacity: 0.9;
           margin-top: 1rem;
+        }
+        .path-transform {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 2rem;
+        }
+        .path-transform-panel {
+          flex: 1;
+          max-width: 320px;
+          text-align: center;
+        }
+        .path-transform-panel img {
+          width: 160px;
+          height: 160px;
+          object-fit: contain;
+          margin: 0 auto 1rem;
+          display: block;
+        }
+        .path-transform-label {
+          display: inline-block;
+          font-family: var(--font-heading);
+          font-weight: 600;
+          font-size: 0.8rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          color: var(--color-hare-brown);
+          background: var(--color-hare-cream);
+          padding: 0.25rem 0.75rem;
+          border-radius: var(--border-radius-full);
+          margin-bottom: 0.5rem;
+        }
+        .path-transform-panel p {
+          color: var(--color-text-muted);
+          font-size: 0.95rem;
+          margin: 0;
+        }
+        .path-transform-arrow {
+          font-size: 2rem;
+          color: var(--color-hare-orange);
+          flex-shrink: 0;
         }
         .lead-text {
           font-size: 1.25rem;
@@ -246,6 +318,8 @@ export default function HariettePath() {
 
         @media (max-width: 768px) {
           .features-grid { grid-template-columns: 1fr; }
+          .path-transform { flex-direction: column; }
+          .path-transform-arrow { transform: rotate(90deg); }
         }
       `}</style>
         </div>

@@ -18,6 +18,10 @@ dist-ssr
 # Supabase CLI local state
 supabase/.temp
 
+# Facelift research/QA scaffolding — screenshots, generated art rounds, scripts.
+# Not a site asset; includes screenshots of third-party competitor pages.
+gauntlet/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
